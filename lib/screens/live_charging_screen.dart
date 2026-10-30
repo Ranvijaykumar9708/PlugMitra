@@ -7,6 +7,8 @@ import '../widgets/charging_gauge.dart';
 import '../widgets/arcade_zen_lounge_sheet.dart';
 import '../widgets/v2g_monetization_sheet.dart';
 import '../widgets/battery_doctor_dialog.dart';
+import '../widgets/bay_delivery_sheet.dart';
+import '../widgets/mitra_shield_dialog.dart';
 
 class LiveChargingScreen extends StatelessWidget {
   final AppState appState;
@@ -612,7 +614,77 @@ class LiveChargingScreen extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(height: 18),
+          const SizedBox(height: 8),
+
+          // ☕ Bay Delivery (Food to Car) & 🛡️ Mitra Shield Protection Row
+          Row(
+            children: [
+              Expanded(
+                child: InkWell(
+                  onTap: () {
+                    showModalBottomSheet(
+                      context: context,
+                      isScrollControlled: true,
+                      backgroundColor: Colors.transparent,
+                      builder: (_) => BayDeliverySheet(appState: appState),
+                    );
+                  },
+                  borderRadius: BorderRadius.circular(14),
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
+                    decoration: BoxDecoration(
+                      color: AppTheme.chargingCard,
+                      borderRadius: BorderRadius.circular(14),
+                      border: Border.all(color: const Color(0xFFFB7185).withOpacity(0.4)),
+                    ),
+                    child: const Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.takeout_dining_rounded, color: Color(0xFFFB7185), size: 16),
+                        SizedBox(width: 4),
+                        Text(
+                          'Bay Dine-In',
+                          style: TextStyle(fontSize: 11, fontWeight: FontWeight.w700, color: Colors.white),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(width: 8),
+              Expanded(
+                child: InkWell(
+                  onTap: () {
+                    showDialog(
+                      context: context,
+                      builder: (_) => MitraShieldDialog(appState: appState),
+                    );
+                  },
+                  borderRadius: BorderRadius.circular(14),
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
+                    decoration: BoxDecoration(
+                      color: AppTheme.chargingCard,
+                      borderRadius: BorderRadius.circular(14),
+                      border: Border.all(color: const Color(0xFF38BDF8).withOpacity(0.4)),
+                    ),
+                    child: const Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.shield_rounded, color: Color(0xFF38BDF8), size: 16),
+                        SizedBox(width: 4),
+                        Text(
+                          'Mitra Shield',
+                          style: TextStyle(fontSize: 11, fontWeight: FontWeight.w700, color: Colors.white),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 16),
 
           // 🛑 Stop Charging & Pause Action Buttons (Screen 12 of Mockup)
           Row(

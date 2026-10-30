@@ -65,6 +65,39 @@ class AppState extends ChangeNotifier {
   bool _isValetActive = false;
   Map<String, dynamic>? _activeValetTask;
 
+  // 🏡 Mitra Home-Sync & Rooftop Solar IoT
+  bool _isSolarOnlyMode = false;
+  bool _homeLoadBalancing = true;
+  double _homeCurrentKw = 7.4;
+  final String _homeWallboxModel = 'Tata Power EZ Home 7.4 kW';
+  final double _homeSolarYieldKw = 5.2;
+
+  // ☕ Bay Delivery & Highway Cafe Dine-In
+  bool _hasActiveFoodOrder = false;
+  Map<String, dynamic>? _activeFoodOrder;
+  final String _loungeAccessPin = 'PIN-VIP-7709';
+
+  // 🤝 Mitra P2P Community Charger Sharing (Airbnb for Chargers)
+  bool _isP2pHostMode = false;
+  final double _p2pEarnings = 12480.0;
+  double _p2pRatePerUnit = 14.5;
+  bool _p2pListingActive = true;
+
+  // 🛡️ Mitra Shield: Monsoon Flood & Zero-Dep Battery Insurance
+  final bool _isMitraShieldActive = true;
+  final String _shieldPolicyId = 'PM-SHIELD-EV-9821-ZERO';
+  final String _shieldPlanName = 'Monsoon Flood & Battery Zero-Dep Platinum';
+  final List<Map<String, dynamic>> _shieldClaims = [];
+
+  // 🛣️ Highway Corridor Shield (Zero-Anxiety Inter-State Cruise)
+  bool _isHighwayCorridorActive = false;
+  final String _activeCorridorName = 'Delhi - Mumbai Expressway (Green Corridor)';
+  final int _corridorFallbackReservePercent = 20;
+
+  // 🪙 Mitra Green Tokens & Carbon Credit Marketplace
+  double _greenCarbonTokens = 1480.0; // 1 Token = ₹1.80
+  final double _co2AvoidedKg = 1920.0;
+
   // Community Issues
   final List<Map<String, dynamic>> _reportedIssues = [];
 
@@ -236,6 +269,133 @@ class AppState extends ChangeNotifier {
     _isValetActive = false;
     _activeValetTask = null;
     notifyListeners();
+  }
+
+  // 🏡 Home-Sync Getters & Actions
+  bool get isSolarOnlyMode => _isSolarOnlyMode;
+  bool get homeLoadBalancing => _homeLoadBalancing;
+  double get homeCurrentKw => _homeCurrentKw;
+  String get homeWallboxModel => _homeWallboxModel;
+  double get homeSolarYieldKw => _homeSolarYieldKw;
+
+  void toggleSolarOnlyMode(bool value) {
+    _isSolarOnlyMode = value;
+    notifyListeners();
+  }
+
+  void toggleHomeLoadBalancing(bool value) {
+    _homeLoadBalancing = value;
+    notifyListeners();
+  }
+
+  void updateHomeCurrentKw(double kw) {
+    _homeCurrentKw = kw;
+    notifyListeners();
+  }
+
+  // ☕ Bay Delivery Getters & Actions
+  bool get hasActiveFoodOrder => _hasActiveFoodOrder;
+  Map<String, dynamic>? get activeFoodOrder => _activeFoodOrder;
+  String get loungeAccessPin => _loungeAccessPin;
+
+  void placeBayFoodOrder({
+    required String cafeName,
+    required List<String> items,
+    required double totalAmount,
+    required String bayNumber,
+  }) {
+    _hasActiveFoodOrder = true;
+    _activeFoodOrder = {
+      'orderId': 'BAY-FOOD-${DateTime.now().millisecondsSinceEpoch % 10000}',
+      'cafeName': cafeName,
+      'items': items,
+      'totalAmount': totalAmount,
+      'bayNumber': bayNumber,
+      'status': 'Preparing fresh at highway kitchen',
+      'etaMinutes': 8,
+      'timestamp': DateTime.now().toIso8601String(),
+    };
+    notifyListeners();
+  }
+
+  void cancelBayFoodOrder() {
+    _hasActiveFoodOrder = false;
+    _activeFoodOrder = null;
+    notifyListeners();
+  }
+
+  // 🤝 P2P Sharing Getters & Actions
+  bool get isP2pHostMode => _isP2pHostMode;
+  double get p2pEarnings => _p2pEarnings;
+  double get p2pRatePerUnit => _p2pRatePerUnit;
+  bool get p2pListingActive => _p2pListingActive;
+
+  void toggleP2pHostMode(bool value) {
+    _isP2pHostMode = value;
+    notifyListeners();
+  }
+
+  void updateP2pRate(double rate) {
+    _p2pRatePerUnit = rate;
+    notifyListeners();
+  }
+
+  void toggleP2pListing(bool value) {
+    _p2pListingActive = value;
+    notifyListeners();
+  }
+
+  // 🛡️ Mitra Shield Insurance Getters & Actions
+  bool get isMitraShieldActive => _isMitraShieldActive;
+  String get shieldPolicyId => _shieldPolicyId;
+  String get shieldPlanName => _shieldPlanName;
+  List<Map<String, dynamic>> get shieldClaims => _shieldClaims;
+
+  void submitShieldClaim({
+    required String incidentType,
+    required String description,
+    required double estimatedDamageAmount,
+  }) {
+    _shieldClaims.add({
+      'claimId': 'CLM-EV-${DateTime.now().millisecondsSinceEpoch % 100000}',
+      'incidentType': incidentType,
+      'description': description,
+      'amount': estimatedDamageAmount,
+      'status': 'Instant Pre-Approval Granted via Battery Doctor',
+      'date': 'Today',
+      'policyNumber': _shieldPolicyId,
+    });
+    notifyListeners();
+  }
+
+  // 🛣️ Highway Corridor Shield Getters & Actions
+  bool get isHighwayCorridorActive => _isHighwayCorridorActive;
+  String get activeCorridorName => _activeCorridorName;
+  int get corridorFallbackReservePercent => _corridorFallbackReservePercent;
+
+  void toggleHighwayCorridor(bool value) {
+    _isHighwayCorridorActive = value;
+    notifyListeners();
+  }
+
+  // 🪙 Mitra Green Tokens & Carbon Credit Marketplace Getters & Actions
+  double get greenCarbonTokens => _greenCarbonTokens;
+  double get co2AvoidedKg => _co2AvoidedKg;
+
+  void sellCarbonTokensToCorporate(double tokensAmount) {
+    if (tokensAmount <= _greenCarbonTokens) {
+      _greenCarbonTokens -= tokensAmount;
+      final earnings = tokensAmount * 1.80; // ₹1.80 per token
+      _walletBalance += earnings;
+      notifyListeners();
+    }
+  }
+
+  void redeemTokens(double amount, String rewardName) {
+    if (amount <= _greenCarbonTokens) {
+      _greenCarbonTokens -= amount;
+      notifyListeners();
+    }
   }
 
   void toggleAutoCharge(bool value) {

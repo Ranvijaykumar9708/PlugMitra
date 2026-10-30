@@ -1,6 +1,6 @@
 # ⚡ PlugMitra (प्लग मित्र)
-> **India's Universal EV Smart Mobility, Swapping & Charging Platform**  
-> *Charge Smarter. Go Greener. Find. Swap. Monetize. Relax.*  
+> **India's Universal EV Smart Mobility, Swapping, IoT & Charging Platform**  
+> *Charge Smarter. Go Greener. Find. Swap. Monetize. Insure. Relax.*  
 
 [![Flutter](https://img.shields.io/badge/Flutter-v3.29.0-02569B?logo=flutter&logoColor=white)](https://flutter.dev)
 [![Dart](https://img.shields.io/badge/Dart-v3.7.0-0175C2?logo=dart&logoColor=white)](https://dart.dev)
@@ -13,7 +13,7 @@
 
 ## 📖 About The Project
 
-**PlugMitra** is a production-grade, state-of-the-art Flutter EV charging and smart energy super-app crafted for the Indian electric mobility ecosystem. It bridges the gap between EV drivers and fragmented charging networks by providing a single, unified interface for discovery, smart reservation, tap-to-charge authentication, live telemetry, 60-second automated battery swapping, vehicle-to-grid monetization, AI mountain elevation planning, valet charging concierge, in-car entertainment lounge, and verified battery health diagnostics.
+**PlugMitra** is a production-grade, state-of-the-art Flutter EV charging, energy IoT, and mobility super-app crafted for the Indian electric mobility ecosystem. It bridges the gap between EV drivers and fragmented charging networks by providing a single, unified interface for discovery, smart reservation, tap-to-charge authentication, live telemetry, 60-second automated battery swapping, vehicle-to-grid monetization, AI mountain elevation planning, valet charging concierge, in-car entertainment lounge, verified battery health diagnostics, smart home rooftop solar IoT, in-car bay food delivery, community P2P charger sharing, zero-depreciation monsoon flood insurance, and green carbon credit trading.
 
 Engineered with a high-contrast **Emerald Green & Pure White** design aesthetic with dark cybernetic telemetry HUDs, PlugMitra seamlessly supports all electric vehicle segments across India:
 - 🛵 **2-Wheelers** (Ather 450X, Ola S1 Pro, TVS iQube, Ultraviolette F77)
@@ -24,36 +24,63 @@ Engineered with a high-contrast **Emerald Green & Pure White** design aesthetic 
 
 ---
 
-## 💎 6 Ultra-Luxury Next-Gen Features
+## 💎 12 Ultra-Luxury & Next-Gen Innovations
 
-### 1. 🔄 60-Second Automated Battery Swapping Network (BaaS)
+### 1. 🏡 Mitra Home-Sync™ — Smart Home Charger & Rooftop Solar IoT
+* **100% Rooftop Solar-Only Mode**: Charges your EV exclusively using free surplus rooftop solar power generated on your roof (₹0 electricity bill).
+* **Smart Dynamic Load Balancing**: Monitors total household draw (ACs, geysers, induction ovens) and dynamically throttles EV charging current from 6A to 32A to eliminate main MCB breaker tripping.
+* **Universal Wallbox IoT**: Connects with Tata Power EZ Home, Ather Dot, ABB Terra, Delta AC Max, and Schneider EVlink via Wi-Fi/Bluetooth.
+
+### 2. ☕ "Bay-Delivery" In-Car Food & Highway Cafe Dine-In
+* **Expressway In-Car Pre-Ordering**: Order gourmet food and beverages from Starbucks, Costa Coffee, Haldiram's, and McDonald's directly inside the app while approaching highway hubs.
+* **Direct Window Delivery**: Highway hub kitchen runners deliver orders in thermal insulated packaging right to your charging bay window.
+* **VIP Lounge & Shower Access**: Instant digital door unlock PIN (`PIN-VIP-7709`) granting access to air-conditioned recliners, executive work pods, and sanitized shower bays.
+
+### 3. 🤝 Mitra P2P Community Charger Sharing (Airbnb for Wallboxes)
+* **Monetize Idle Home Chargers**: Apartment and villa EV owners list their home wallbox on the PlugMitra map during office hours to earn passive income (₹12,480/month).
+* **Apartment Society Solution**: Solves gated community EV infrastructure challenges by enabling peer-to-peer charging among verified society residents.
+* **Automated Society Visitor Gate Pass**: Generates encrypted digital visitor QR tokens (`PM-DLF-4402`) for security guards with OTP-based charger unlocking.
+
+### 4. 🛡️ "Mitra Shield" — Monsoon Flood & EV Battery Zero-Dep Insurance
+* **Monsoon Urban Flood Immersion Cover**: Comprehensive ₹10,00,000 battery pack cover with ₹0 deductible protecting against waterlogging and underbody seal breaches.
+* **Public Charger Arc Flash Protection**: Covers voltage spikes, electrical short circuits, and damaged gun port locking mechanisms.
+* **AI Telemetry Auto-Claim Settlement**: Attaches verified "Battery Doctor" State-of-Health diagnostic reports to grant instant cashless claim approvals in seconds.
+
+### 5. 🛣️ "Highway Corridor Shield" (Inter-State Zero-Anxiety Cruise)
+* **Long-Distance Expressway Profiler**: Simulates Delhi-Mumbai Expressway (NE4) and Bangalore-Hyderabad routes with real-world 20% minimum safety reserves.
+* **Dynamic Fallback Hub Intelligence**: If a planned 150kW DC hub develops high queues or kiosk offline status, automatically reroutes the vehicle 25 km in advance to a verified backup station.
+* **Aerodynamic Drag & Headwind Monitor**: Computes real-time range penalties from 35 km/h headwinds (-14% range) and extreme summer cabin HVAC load.
+
+### 6. 🪙 Mitra Green Tokens & ESG Carbon Credit Marketplace
+* **Clean Energy Token Minting**: Earn 1 Mitra Green Carbon Token (MGCT) for every 1 kWh of verified clean solar or wind energy consumed.
+* **Corporate ESG Credit Trading**: Sell accumulated carbon avoidance credits directly to corporate sustainability buyers (Tata, Infosys, Wipro Green) at ₹1.80/token for cash deposits.
+* **Redemption Rewards Store**: Redeem tokens for ₹500 FASTag highway toll top-ups, free highway supercharging credits, Starbucks vouchers, and ceramic EV detailing kits.
+
+### 7. 🔄 60-Second Automated Battery Swapping Network (BaaS)
 * **Cabinet Slot Matrix**: Real-time visual matrix of 8-bay smart charging cabinets (e.g. 5 Ready 100% Packs, 2 Charging at 62%, 1 Bay Empty).
-* **60-Second Robotic Swap Simulation**: Instant battery exchange with sound/vibration feedback, resetting vehicle State-of-Charge (SoC) back to 100% in 1 minute.
+* **60-Second Robotic Swap Simulation**: Instant battery exchange resetting vehicle State-of-Charge (SoC) back to 100% in 1 minute.
 * **Battery-as-a-Service (BaaS) Subscription**: Lowers upfront EV purchase cost by unbundling battery cost. Pay only for energy consumed (₹160 per swap).
 
-### 2. ⚡ V2G (Vehicle-to-Grid) "Earn from your EV" Monetization
+### 8. ⚡ V2G (Vehicle-to-Grid) "Earn from your EV" Monetization
 * **Peak Power Export (₹18.50/kWh)**: Transform your EV into a decentralized virtual power plant. Export surplus energy to the city grid during peak demand hours.
 * **Live Revenue Tracking**: Real-time calculation of net units exported, earnings generated (up to ₹420/day), and dynamic feed-in tariffs.
 * **V2H Emergency Home Backup**: Switch to Vehicle-to-Home emergency backup mode to power household appliances during power cuts for up to 36 hours.
 
-### 3. 🗺️ AI Mountain Elevation & Climate Range Planner (Tesla-Grade)
-* **Topographical Elevation Profiler**: Computes real-world gravitational drag on steep climbs (+1,850m, e.g. Delhi to Shimla / Mussoorie, with up to -28% energy penalty).
+### 9. 🗺️ AI Mountain Elevation & Climate Range Planner
+* **Topographical Elevation Profiler**: Computes real-world gravitational drag on steep climbs (+1,850m, e.g. Delhi to Shimla, with up to -28% energy penalty).
 * **Downhill Regenerative Braking Model**: Accurately credits back energy harvested during descents (+14% SoC replenishment).
 * **Extreme Weather & AC Load Factor**: Interactive ambient slider from 15°C to 45°C computing cabin HVAC load adjustments.
-* **Intelligent Pitstop Suggestion**: Pinpoints the exact mountain highway charger to plug in before the steep climb.
 
-### 4. 🤖 Mitra Valet & RoboCharge Concierge
-* **5-Star Hotel & Luxury Mall Drop-Off**: Available at premium locations (Aerocity, DLF CyberHub, Palladium, Grand Chola).
+### 10. 🤖 Mitra Valet & RoboCharge Concierge
+* **5-Star Hotel & Luxury Mall Drop-Off**: Available at premium locations (Aerocity, DLF CyberHub, Palladium).
 * **Encrypted Key Handover PIN**: Secure 6-digit one-time token (`PM-VALET-9821`) for authorized valet drivers.
 * **Auto-Charge & Repark Protocol**: Valet moves the EV to an ultra-fast DC bay, charges it to 80%, and returns it to a designated parking bay to eliminate idle parking fees.
-* **Live Bay Camera & Status Tracker**: Real-time milestone tracker from *Key Handover* to *Charging in Progress* and *Safely Parked*.
 
-### 5. 🩺 "Battery Doctor" AI State-of-Health (SoH) Diagnostics
+### 11. 🩺 "Battery Doctor" AI State-of-Health (SoH) Diagnostics
 * **OEM-Grade Cell Telemetry**: High-precision State of Health analysis (98.2% SoH), cell-to-cell voltage balance (0.012V delta), and operating temperature monitor.
 * **Certified Resale Certificate**: Generates an authoritative digital battery health audit report adding up to ₹1,20,000 to vehicle resale equity.
-* **Cycle Count & Thermal Protection**: Verifies lifetime DC vs AC charge cycles and confirms zero thermal runaway vulnerability.
 
-### 6. 🎮 In-Car Arcade, OTT Cinema & Zen Sleep Lounge
+### 12. 🎮 In-Car Arcade, OTT Cinema & Zen Sleep Lounge
 * **EV Hyperdrive 2D Arcade Game**: Playable in-cockpit racing game while the vehicle is parked and charging.
 * **Green Energy Trivia**: Quick interactive EV quizzes to earn Mitra Coins while waiting.
 * **Streaming Cinema Hub**: One-tap deep-links to launch Netflix, YouTube, Hotstar, and Spotify on vehicle infotainment screens.
@@ -63,61 +90,27 @@ Engineered with a high-contrast **Emerald Green & Pure White** design aesthetic 
 
 ## 👑 Elite & Exclusive Premium Services
 
-### 1. 👑 PlugMitra Black VIP Club
+### 👑 PlugMitra Black VIP Club
 * **Flat 25% Off Super-Tariff**: Automatic discounted rate across all verified hubs (`₹13.50/kWh` instead of `₹18.00/kWh`).
 * **3-Hour Priority Slot Booking**: Block charging bays up to 3 hours in advance with zero queue waiting.
-* **Executive Lounge Access**: Complimentary access to air-conditioned pods, Wi-Fi, work desks & gourmet coffee.
 * **Laser-Engraved Metal Keycard**: Physical matte-black NFC RFID card delivered home.
-* **2x Free Mitra Rescue Dispatches**: Free roadside mobile fast-charging van dispatches annually.
 
-### 2. 🚨 Mitra Rescue — On-Demand Mobile EV Fast-Charging Van (SOS)
+### 🚨 Mitra Rescue — On-Demand Mobile EV Fast-Charging Van (SOS)
 * **Stranded Driver SOS Dispatch**: Call a Mobile Fast-Charging Van directly to your breakdown GPS coordinates.
 * **30 kW DC Mobile Rapid Boost**: Delivers 15-20 min high-speed boost (+35 to +40 km range) to safely reach the nearest permanent hub.
 * **Roadside Emergency Kit**: Includes digital tyre pressure inflator and 12V LiFePO4 auxiliary battery jumpstart.
 
-### 3. 🌙 Smart ToD (Time-of-Day) Off-Peak Tariff Optimizer
+### 🌙 Smart ToD (Time-of-Day) Off-Peak Tariff Optimizer
 * **24-Hour Electricity Tariff Chart**: Dynamic visualization of off-peak hours (11:00 PM – 06:00 AM at ₹9.50/unit) vs peak demand (₹22.50/unit).
 * **Overnight Auto-Charge Scheduler**: Plug the charging gun now; charging automatically starts when off-peak begins.
-* **Real-time Savings Calculator**: Displays exact rupee savings per session (~₹340/session).
 
-### 4. 🌱 100% Certified Solar Green Energy & ESG Certificates
-* **Solar Microgrid Filter**: Dedicated toggle and map filter to discover charging stations powered 100% by solar and wind.
-* **Verified ESG Renewable Energy Certificate (REC)**: Downloadable and LinkedIn-ready verified carbon avoidance certificates for ESG audits and tax benefits.
-
-### 5. 🏢 Fleet Mitra — Commercial EV Fleet Control & Logistics Dashboard
+### 🏢 Fleet Mitra — Commercial EV Fleet Control & Logistics Dashboard
 * **Centralized Corporate FastWallet**: Multi-driver shared wallet balance (`₹48,500.00`) with consolidated monthly GST tax reports.
 * **Live Fleet Roster & Telemetry**: Monitor battery levels, active charging sessions, and transit routes across delivery trucks and cargo 3-wheelers.
 
-### 6. 🎙️ Hey Mitra — AI Smart Voice Co-Pilot (Bilingual)
+### 🎙️ Hey Mitra — AI Smart Voice Co-Pilot (Bilingual)
 * **Natural Voice Commands**: Hands-free voice navigation in Hindi and English.
 * **Intelligent Query Interpretation**: *"Agra Expressway 60kW charger with coffee"* or *"Nearest 2-wheeler Ather charger"*.
-
----
-
-## 🌟 Core App Features
-
-### 🎛️ Advanced Multi-Factor EV Filter
-* Filter by socket type (`CCS-2`, `Type-2`, `CHAdeMO`, `Bharat AC-001`, `Ather Dot / 16A`).
-* Minimum power slider (3.3 kW to 150 kW+), driver amenities (`Coffee`, `Wi-Fi`, `Restrooms`, `Lounge`), and 24x7 status.
-
-### 🚗 Multi-EV Garage & Dynamic App Adaptation
-* Switch between active vehicles from the Discover screen or Profile screen. All station compatibility, tariffs, and range adapt dynamically.
-
-### 💳 Virtual Tap-to-Charge RFID Keycard & AutoCharge (ISO 15118)
-* Built-in contactless smart card simulation (`PM-RFID-8921-IN`) with NFC animation.
-* ISO 15118 Plug & Charge support for seamless gun connection without scanning.
-
-### 🔋 Live Telemetry HUD & 80% Sweet-Spot Battery Protection
-* Radial telemetry gauge displaying SoC %, charging speed (kW), energy delivered (kWh), voltage (405V), and current (142A).
-* 80% sweet-spot protection alert to preserve battery longevity.
-
-### ⭐ Crowdsourced Community Reviews & Broken Gun Reporting
-* Authentic driver star ratings with vehicle stamps.
-* In-app issue reporting for `Broken Gun`, `ICEing (Petrol car blocking bay)`, `Offline Kiosk`, or `Slow Charging`.
-
-### ⚡ EV vs Petrol Fuel Savings & Carbon Calculator
-* Real-time monthly and annual cost savings comparison (EV at ₹1.25/km vs Petrol at ₹7.50/km).
-* Environmental impact counter displaying monthly CO₂ emissions eliminated and trees planted.
 
 ---
 
@@ -133,7 +126,7 @@ lib/
 │   ├── station.dart                   # Charging station, operator metadata, solar flags & sockets
 │   └── charging_session.dart          # Telemetry engine, dynamic power curves & billing
 ├── state/
-│   └── app_state.dart                 # Centralized ChangeNotifier for VIP, Rescue, Fleet, V2G, SoH & Swaps
+│   └── app_state.dart                 # Centralized ChangeNotifier for VIP, Rescue, Fleet, V2G, SoH, IoT & P2P
 ├── widgets/
 │   ├── advanced_filter_sheet.dart     # Multi-factor filter modal (connectors, kW, amenities)
 │   ├── charging_gauge.dart            # High-contrast radial telemetry gauge with glow
@@ -153,16 +146,22 @@ lib/
 │   ├── elevation_route_planner_dialog.dart # 🗺️ AI Mountain Elevation & Climate Planner
 │   ├── valet_robocharge_sheet.dart    # 🤖 Mitra Valet & RoboCharge Concierge
 │   ├── battery_doctor_dialog.dart     # 🩺 Battery Doctor AI SoH & Resale Certificate
-│   └── arcade_zen_lounge_sheet.dart   # 🎮 In-Car Arcade, OTT Cinema & Zen Sleep Lounge
+│   ├── arcade_zen_lounge_sheet.dart   # 🎮 In-Car Arcade, OTT Cinema & Zen Sleep Lounge
+│   ├── home_sync_sheet.dart           # 🏡 Mitra Home-Sync Smart Wallbox & Solar IoT
+│   ├── bay_delivery_sheet.dart        # ☕ Bay-Delivery Highway Food & In-Car Dine-In
+│   ├── p2p_sharing_sheet.dart         # 🤝 Mitra P2P Community Charger Sharing (Airbnb)
+│   ├── mitra_shield_dialog.dart       # 🛡️ Mitra Shield: Monsoon & Zero-Dep Battery Cover
+│   ├── highway_corridor_dialog.dart   # 🛣️ Highway Corridor Shield Zero-Anxiety Cruise
+│   └── carbon_marketplace_sheet.dart  # 🪙 Mitra Green Tokens & Carbon Credit Market
 └── screens/
     ├── main_shell.dart                # 5-Tab shell with adaptive navigation bar & mini telemetry pill
     ├── discover_screen.dart           # Search, map/list view, vehicle picker & quick filters
     ├── scan_qr_screen.dart            # Viewfinder, animated laser, Virtual RFID tap & manual ID
-    ├── live_charging_screen.dart     # Real-time telemetry dashboard, Lounge, V2G Sell & Battery SoH
+    ├── live_charging_screen.dart     # Real-time telemetry dashboard, Lounge, V2G, Bay Dine-In & Shield
     ├── charging_completed_screen.dart # Completion receipt, ESG certificate & tax invoice
     ├── booking_screen.dart            # Advance slot reservation workflow & pass manager
     ├── station_detail_sheet.dart      # Connector selector, community reviews & issue reporting
-    ├── wallet_profile_screen.dart     # Mitra wallet, VIP club, Fleet portal & V2G grid earnings
+    ├── wallet_profile_screen.dart     # Mitra wallet, VIP club, Tokens, P2P Host & Shield
     └── profile_setup_screen.dart     # Vehicle specs manager & registration editor
 ```
 

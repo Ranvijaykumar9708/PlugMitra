@@ -14,6 +14,10 @@ import '../widgets/battery_swap_sheet.dart';
 import '../widgets/elevation_route_planner_dialog.dart';
 import '../widgets/battery_doctor_dialog.dart';
 import '../widgets/valet_robocharge_sheet.dart';
+import '../widgets/home_sync_sheet.dart';
+import '../widgets/p2p_sharing_sheet.dart';
+import '../widgets/highway_corridor_dialog.dart';
+import '../widgets/carbon_marketplace_sheet.dart';
 import 'station_detail_sheet.dart';
 
 class DiscoverScreen extends StatefulWidget {
@@ -35,6 +39,10 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
     '🗺️ Mountain Elevation',
     '🩺 Battery Doctor',
     '🤖 Valet Concierge',
+    '🏡 Home Sync',
+    '🤝 P2P Sharing',
+    '🛣️ Highway Corridor',
+    '🪙 Green Tokens',
     '🚨 Mitra Rescue SOS',
     '☀️ 100% Solar',
     '🛣️ Plan Trip',
@@ -343,6 +351,32 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
                                   isScrollControlled: true,
                                   backgroundColor: Colors.transparent,
                                   builder: (_) => ValetRobochargeSheet(appState: widget.appState),
+                                );
+                              } else if (chip.contains('Home') || chip.contains('Sync')) {
+                                showModalBottomSheet(
+                                  context: context,
+                                  isScrollControlled: true,
+                                  backgroundColor: Colors.transparent,
+                                  builder: (_) => HomeSyncSheet(appState: widget.appState),
+                                );
+                              } else if (chip.contains('P2P') || chip.contains('Sharing')) {
+                                showModalBottomSheet(
+                                  context: context,
+                                  isScrollControlled: true,
+                                  backgroundColor: Colors.transparent,
+                                  builder: (_) => P2pSharingSheet(appState: widget.appState),
+                                );
+                              } else if (chip.contains('Corridor')) {
+                                showDialog(
+                                  context: context,
+                                  builder: (_) => HighwayCorridorDialog(appState: widget.appState),
+                                );
+                              } else if (chip.contains('Tokens') || chip.contains('Green')) {
+                                showModalBottomSheet(
+                                  context: context,
+                                  isScrollControlled: true,
+                                  backgroundColor: Colors.transparent,
+                                  builder: (_) => CarbonMarketplaceSheet(appState: widget.appState),
                                 );
                               } else if (chip.contains('Solar')) {
                                 state.toggleSolarFilter();

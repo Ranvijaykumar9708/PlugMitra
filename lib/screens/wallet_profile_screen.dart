@@ -12,6 +12,10 @@ import '../widgets/battery_doctor_dialog.dart';
 import '../widgets/battery_swap_sheet.dart';
 import '../widgets/valet_robocharge_sheet.dart';
 import '../widgets/v2g_monetization_sheet.dart';
+import '../widgets/carbon_marketplace_sheet.dart';
+import '../widgets/mitra_shield_dialog.dart';
+import '../widgets/home_sync_sheet.dart';
+import '../widgets/p2p_sharing_sheet.dart';
 
 class WalletProfileScreen extends StatefulWidget {
   final AppState appState;
@@ -760,6 +764,146 @@ class _WalletProfileScreenState extends State<WalletProfileScreen> {
                 ],
               ),
             ),
+          ),
+          const SizedBox(height: 8),
+
+          // 💎 4 Next-Gen Services: Green Tokens, Mitra Shield, Home-Sync & P2P Host
+          Row(
+            children: [
+              Expanded(
+                child: InkWell(
+                  onTap: () {
+                    showModalBottomSheet(
+                      context: context,
+                      isScrollControlled: true,
+                      backgroundColor: Colors.transparent,
+                      builder: (_) => CarbonMarketplaceSheet(appState: widget.appState),
+                    );
+                  },
+                  borderRadius: BorderRadius.circular(14),
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(14),
+                      border: Border.all(color: AppTheme.borderLight),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Icon(Icons.eco_rounded, color: AppTheme.primaryGreen, size: 16),
+                        const SizedBox(width: 4),
+                        Text(
+                          '${widget.appState.greenCarbonTokens.toStringAsFixed(0)} Tokens',
+                          style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 11, color: AppTheme.textPrimary),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(width: 8),
+              Expanded(
+                child: InkWell(
+                  onTap: () {
+                    showDialog(
+                      context: context,
+                      builder: (_) => MitraShieldDialog(appState: widget.appState),
+                    );
+                  },
+                  borderRadius: BorderRadius.circular(14),
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(14),
+                      border: Border.all(color: AppTheme.borderLight),
+                    ),
+                    child: const Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.shield_outlined, color: Color(0xFF0284C7), size: 16),
+                        SizedBox(width: 4),
+                        Text(
+                          'Mitra Shield',
+                          style: TextStyle(fontWeight: FontWeight.w700, fontSize: 11, color: AppTheme.textPrimary),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 8),
+          Row(
+            children: [
+              Expanded(
+                child: InkWell(
+                  onTap: () {
+                    showModalBottomSheet(
+                      context: context,
+                      isScrollControlled: true,
+                      backgroundColor: Colors.transparent,
+                      builder: (_) => HomeSyncSheet(appState: widget.appState),
+                    );
+                  },
+                  borderRadius: BorderRadius.circular(14),
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(14),
+                      border: Border.all(color: AppTheme.borderLight),
+                    ),
+                    child: const Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.solar_power_outlined, color: Color(0xFFF59E0B), size: 16),
+                        SizedBox(width: 4),
+                        Text(
+                          'Home-Sync IoT',
+                          style: TextStyle(fontWeight: FontWeight.w700, fontSize: 11, color: AppTheme.textPrimary),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(width: 8),
+              Expanded(
+                child: InkWell(
+                  onTap: () {
+                    showModalBottomSheet(
+                      context: context,
+                      isScrollControlled: true,
+                      backgroundColor: Colors.transparent,
+                      builder: (_) => P2pSharingSheet(appState: widget.appState),
+                    );
+                  },
+                  borderRadius: BorderRadius.circular(14),
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(14),
+                      border: Border.all(color: AppTheme.borderLight),
+                    ),
+                    child: const Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.handshake_outlined, color: Color(0xFF10B981), size: 16),
+                        SizedBox(width: 4),
+                        Text(
+                          'P2P Wallbox Host',
+                          style: TextStyle(fontWeight: FontWeight.w700, fontSize: 11, color: AppTheme.textPrimary),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
           const SizedBox(height: 16),
 
