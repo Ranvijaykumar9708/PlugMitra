@@ -10,6 +10,10 @@ import '../widgets/trip_planner_dialog.dart';
 import '../widgets/vip_membership_sheet.dart';
 import '../widgets/mitra_rescue_sheet.dart';
 import '../widgets/voice_copilot_sheet.dart';
+import '../widgets/battery_swap_sheet.dart';
+import '../widgets/elevation_route_planner_dialog.dart';
+import '../widgets/battery_doctor_dialog.dart';
+import '../widgets/valet_robocharge_sheet.dart';
 import 'station_detail_sheet.dart';
 
 class DiscoverScreen extends StatefulWidget {
@@ -27,6 +31,10 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
     'All',
     'Available',
     'Fast Charging',
+    '🔄 Battery Swap',
+    '🗺️ Mountain Elevation',
+    '🩺 Battery Doctor',
+    '🤖 Valet Concierge',
     '🚨 Mitra Rescue SOS',
     '☀️ 100% Solar',
     '🛣️ Plan Trip',
@@ -311,6 +319,30 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
                                   isScrollControlled: true,
                                   backgroundColor: Colors.transparent,
                                   builder: (_) => MitraRescueSheet(appState: widget.appState),
+                                );
+                              } else if (chip.contains('Swap')) {
+                                showModalBottomSheet(
+                                  context: context,
+                                  isScrollControlled: true,
+                                  backgroundColor: Colors.transparent,
+                                  builder: (_) => BatterySwapSheet(appState: widget.appState),
+                                );
+                              } else if (chip.contains('Mountain') || chip.contains('Elevation')) {
+                                showDialog(
+                                  context: context,
+                                  builder: (_) => ElevationRoutePlannerDialog(appState: widget.appState),
+                                );
+                              } else if (chip.contains('Doctor')) {
+                                showDialog(
+                                  context: context,
+                                  builder: (_) => BatteryDoctorDialog(appState: widget.appState),
+                                );
+                              } else if (chip.contains('Valet')) {
+                                showModalBottomSheet(
+                                  context: context,
+                                  isScrollControlled: true,
+                                  backgroundColor: Colors.transparent,
+                                  builder: (_) => ValetRobochargeSheet(appState: widget.appState),
                                 );
                               } else if (chip.contains('Solar')) {
                                 state.toggleSolarFilter();

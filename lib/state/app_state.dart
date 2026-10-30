@@ -47,6 +47,24 @@ class AppState extends ChangeNotifier {
   bool _isFleetMode = false;
   double _fleetWalletBalance = 48500.0;
 
+  // 💰 V2G (Vehicle-to-Grid) Reverse Monetization
+  bool _isV2gActive = false;
+  double _v2gEarningsToday = 420.0;
+  final double _v2gExportRateKw = 11.0;
+
+  // 🩺 Battery Doctor Diagnostic Telemetry
+  final double _batterySohPercent = 98.2;
+  final double _batteryTempCelsius = 28.5;
+  final int _batteryCycleCount = 142;
+  final String _batteryHealthRating = 'Pristine Condition (Class A+)';
+
+  // 🔄 60-Second Battery Swap System
+  int _availableSwapPacks = 9;
+
+  // 🤖 Mitra Valet & RoboCharge Concierge
+  bool _isValetActive = false;
+  Map<String, dynamic>? _activeValetTask;
+
   // Community Issues
   final List<Map<String, dynamic>> _reportedIssues = [];
 
@@ -164,6 +182,59 @@ class AppState extends ChangeNotifier {
 
   void toggleSolarFilter() {
     _onlySolar = !_onlySolar;
+    notifyListeners();
+  }
+
+  // 💰 V2G Getters & Actions
+  bool get isV2gActive => _isV2gActive;
+  double get v2gEarningsToday => _v2gEarningsToday;
+  double get v2gExportRateKw => _v2gExportRateKw;
+
+  void toggleV2g(bool value) {
+    _isV2gActive = value;
+    if (value) {
+      _v2gEarningsToday += 18.50; // increment demo earnings
+    }
+    notifyListeners();
+  }
+
+  // 🩺 Battery Doctor Diagnostic Getters
+  double get batterySohPercent => _batterySohPercent;
+  double get batteryTempCelsius => _batteryTempCelsius;
+  int get batteryCycleCount => _batteryCycleCount;
+  String get batteryHealthRating => _batteryHealthRating;
+
+  // 🔄 60-Second Battery Swap System
+  int get availableSwapPacks => _availableSwapPacks;
+
+  void performBatterySwap() {
+    selectedVehicle.currentSocPercent = 100.0;
+    if (_availableSwapPacks > 0) _availableSwapPacks--;
+    notifyListeners();
+  }
+
+  // 🤖 Mitra Valet & RoboCharge Actions
+  bool get isValetActive => _isValetActive;
+  Map<String, dynamic>? get activeValetTask => _activeValetTask;
+
+  void requestValetRoboCharge({required String location, required String vehicleName}) {
+    _isValetActive = true;
+    _activeValetTask = {
+      'valetName': 'Suresh Mehta (Certified PlugMitra Valet Concierge)',
+      'location': location,
+      'vehicleName': vehicleName,
+      'status': 'Car Parked & Connected to 60kW DC HyperGun',
+      'targetSoc': 80,
+      'keyHandoverPin': 'PM-VALET-9821',
+      'photoVerified': true,
+      'timestamp': DateTime.now().toIso8601String(),
+    };
+    notifyListeners();
+  }
+
+  void completeValetTask() {
+    _isValetActive = false;
+    _activeValetTask = null;
     notifyListeners();
   }
 

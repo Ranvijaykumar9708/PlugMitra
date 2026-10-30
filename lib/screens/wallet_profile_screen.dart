@@ -8,6 +8,10 @@ import '../widgets/vip_membership_sheet.dart';
 import '../widgets/mitra_rescue_sheet.dart';
 import '../widgets/fleet_mitra_sheet.dart';
 import '../widgets/tariff_scheduler_dialog.dart';
+import '../widgets/battery_doctor_dialog.dart';
+import '../widgets/battery_swap_sheet.dart';
+import '../widgets/valet_robocharge_sheet.dart';
+import '../widgets/v2g_monetization_sheet.dart';
 
 class WalletProfileScreen extends StatefulWidget {
   final AppState appState;
@@ -576,7 +580,188 @@ class _WalletProfileScreenState extends State<WalletProfileScreen> {
               ),
             ],
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: 8),
+
+          // 💎 Luxury Innovations Row: Battery Doctor, Swap Cabinet & Valet Concierge
+          Row(
+            children: [
+              Expanded(
+                child: InkWell(
+                  onTap: () {
+                    showDialog(
+                      context: context,
+                      builder: (_) => BatteryDoctorDialog(appState: widget.appState),
+                    );
+                  },
+                  borderRadius: BorderRadius.circular(14),
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(14),
+                      border: Border.all(color: AppTheme.borderLight),
+                    ),
+                    child: const Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.health_and_safety_outlined, color: AppTheme.primaryGreen, size: 16),
+                        SizedBox(width: 4),
+                        Text(
+                          'Battery SoH',
+                          style: TextStyle(fontWeight: FontWeight.w700, fontSize: 11, color: AppTheme.textPrimary),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(width: 8),
+              Expanded(
+                child: InkWell(
+                  onTap: () {
+                    showModalBottomSheet(
+                      context: context,
+                      isScrollControlled: true,
+                      backgroundColor: Colors.transparent,
+                      builder: (_) => BatterySwapSheet(appState: widget.appState),
+                    );
+                  },
+                  borderRadius: BorderRadius.circular(14),
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(14),
+                      border: Border.all(color: AppTheme.borderLight),
+                    ),
+                    child: const Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.sync_rounded, color: AppTheme.electricMint, size: 16),
+                        SizedBox(width: 4),
+                        Text(
+                          '60s Swap',
+                          style: TextStyle(fontWeight: FontWeight.w700, fontSize: 11, color: AppTheme.textPrimary),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(width: 8),
+              Expanded(
+                child: InkWell(
+                  onTap: () {
+                    showModalBottomSheet(
+                      context: context,
+                      isScrollControlled: true,
+                      backgroundColor: Colors.transparent,
+                      builder: (_) => ValetRobochargeSheet(appState: widget.appState),
+                    );
+                  },
+                  borderRadius: BorderRadius.circular(14),
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(14),
+                      border: Border.all(color: AppTheme.borderLight),
+                    ),
+                    child: const Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.car_rental_rounded, color: Color(0xFFC084FC), size: 16),
+                        SizedBox(width: 4),
+                        Text(
+                          'Valet Bay',
+                          style: TextStyle(fontWeight: FontWeight.w700, fontSize: 11, color: AppTheme.textPrimary),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 8),
+
+          // ⚡ V2G Grid Sell Earnings Banner
+          InkWell(
+            onTap: () {
+              showModalBottomSheet(
+                context: context,
+                isScrollControlled: true,
+                backgroundColor: Colors.transparent,
+                builder: (_) => V2gMonetizationSheet(appState: widget.appState),
+              );
+            },
+            borderRadius: BorderRadius.circular(16),
+            child: Container(
+              padding: const EdgeInsets.all(14),
+              decoration: BoxDecoration(
+                gradient: const LinearGradient(
+                  colors: [Color(0xFF0F2027), Color(0xFF203A43), Color(0xFF2C5364)],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                ),
+                borderRadius: BorderRadius.circular(16),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.08),
+                    blurRadius: 10,
+                    offset: const Offset(0, 4),
+                  ),
+                ],
+              ),
+              child: Row(
+                children: [
+                  Container(
+                    padding: const EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      color: AppTheme.electricMint.withOpacity(0.2),
+                      shape: BoxShape.circle,
+                    ),
+                    child: const Icon(Icons.bolt_rounded, color: AppTheme.electricMint, size: 22),
+                  ),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            const Text(
+                              'V2G Grid Monetization',
+                              style: TextStyle(color: Colors.white, fontWeight: FontWeight.w800, fontSize: 13),
+                            ),
+                            const SizedBox(width: 6),
+                            Container(
+                              padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                              decoration: BoxDecoration(
+                                color: AppTheme.electricMint,
+                                borderRadius: BorderRadius.circular(6),
+                              ),
+                              child: const Text(
+                                '₹18.50/kWh',
+                                style: TextStyle(color: Colors.black, fontWeight: FontWeight.w900, fontSize: 9),
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 2),
+                        const Text(
+                          'Sell excess battery power back to grid & earn up to ₹420/day',
+                          style: TextStyle(color: Colors.white70, fontSize: 11),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const Icon(Icons.arrow_forward_ios_rounded, color: Colors.white54, size: 14),
+                ],
+              ),
+            ),
+          ),
+          const SizedBox(height: 16),
 
           // Active Vehicle Box & Switcher
           Row(

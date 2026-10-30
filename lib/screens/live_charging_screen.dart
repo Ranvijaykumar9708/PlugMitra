@@ -4,6 +4,9 @@ import '../models/charging_session.dart';
 import '../state/app_state.dart';
 import '../theme/app_theme.dart';
 import '../widgets/charging_gauge.dart';
+import '../widgets/arcade_zen_lounge_sheet.dart';
+import '../widgets/v2g_monetization_sheet.dart';
+import '../widgets/battery_doctor_dialog.dart';
 
 class LiveChargingScreen extends StatelessWidget {
   final AppState appState;
@@ -506,7 +509,110 @@ class LiveChargingScreen extends StatelessWidget {
               ],
             ),
           ),
-          const SizedBox(height: 22),
+          const SizedBox(height: 14),
+
+          // ⚡ In-Car Lounge, V2G & Battery Doctor Elite Row
+          Row(
+            children: [
+              Expanded(
+                child: InkWell(
+                  onTap: () {
+                    showModalBottomSheet(
+                      context: context,
+                      isScrollControlled: true,
+                      backgroundColor: Colors.transparent,
+                      builder: (_) => ArcadeZenLoungeSheet(appState: appState),
+                    );
+                  },
+                  borderRadius: BorderRadius.circular(14),
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
+                    decoration: BoxDecoration(
+                      color: AppTheme.chargingCard,
+                      borderRadius: BorderRadius.circular(14),
+                      border: Border.all(color: const Color(0xFF8B5CF6).withOpacity(0.5)),
+                    ),
+                    child: const Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.sports_esports_outlined, color: Color(0xFFC084FC), size: 16),
+                        SizedBox(width: 4),
+                        Text(
+                          'Lounge & Games',
+                          style: TextStyle(fontSize: 11, fontWeight: FontWeight.w700, color: Colors.white),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(width: 8),
+              Expanded(
+                child: InkWell(
+                  onTap: () {
+                    showModalBottomSheet(
+                      context: context,
+                      isScrollControlled: true,
+                      backgroundColor: Colors.transparent,
+                      builder: (_) => V2gMonetizationSheet(appState: appState),
+                    );
+                  },
+                  borderRadius: BorderRadius.circular(14),
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
+                    decoration: BoxDecoration(
+                      color: AppTheme.chargingCard,
+                      borderRadius: BorderRadius.circular(14),
+                      border: Border.all(color: AppTheme.electricMint.withOpacity(0.4)),
+                    ),
+                    child: const Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.currency_rupee, color: AppTheme.electricMint, size: 16),
+                        SizedBox(width: 4),
+                        Text(
+                          'V2G Grid Sell',
+                          style: TextStyle(fontSize: 11, fontWeight: FontWeight.w700, color: Colors.white),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(width: 8),
+              Expanded(
+                child: InkWell(
+                  onTap: () {
+                    showDialog(
+                      context: context,
+                      builder: (_) => BatteryDoctorDialog(appState: appState),
+                    );
+                  },
+                  borderRadius: BorderRadius.circular(14),
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
+                    decoration: BoxDecoration(
+                      color: AppTheme.chargingCard,
+                      borderRadius: BorderRadius.circular(14),
+                      border: Border.all(color: AppTheme.chargingBorder),
+                    ),
+                    child: const Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.health_and_safety_outlined, color: AppTheme.electricCyan, size: 16),
+                        SizedBox(width: 4),
+                        Text(
+                          'Battery SoH',
+                          style: TextStyle(fontSize: 11, fontWeight: FontWeight.w700, color: Colors.white),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 18),
 
           // 🛑 Stop Charging & Pause Action Buttons (Screen 12 of Mockup)
           Row(
