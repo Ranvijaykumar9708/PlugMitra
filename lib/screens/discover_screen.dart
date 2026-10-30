@@ -7,6 +7,9 @@ import '../widgets/advanced_filter_sheet.dart';
 import '../widgets/map_preview_widget.dart';
 import '../widgets/station_card.dart';
 import '../widgets/trip_planner_dialog.dart';
+import '../widgets/vip_membership_sheet.dart';
+import '../widgets/mitra_rescue_sheet.dart';
+import '../widgets/voice_copilot_sheet.dart';
 import 'station_detail_sheet.dart';
 
 class DiscoverScreen extends StatefulWidget {
@@ -20,7 +23,16 @@ class DiscoverScreen extends StatefulWidget {
 
 class _DiscoverScreenState extends State<DiscoverScreen> {
   final TextEditingController _searchCtrl = TextEditingController();
-  final List<String> _quickChips = ['All', 'Available', 'Fast Charging', '🛣️ Plan Trip', '⭐ PlugMitra Hubs', 'Truck Bay'];
+  final List<String> _quickChips = [
+    'All',
+    'Available',
+    'Fast Charging',
+    '🚨 Mitra Rescue SOS',
+    '☀️ 100% Solar',
+    '🛣️ Plan Trip',
+    '⭐ PlugMitra Hubs',
+    'Truck Bay',
+  ];
   bool _isMapView = true; // Toggle between Screen 6 (Map) & Screen 7 (List)
 
   late PageController _pageController;
@@ -133,6 +145,47 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
                             ),
                           ),
                         ],
+                      ),
+
+                      // 👑 VIP Club Access
+                      GestureDetector(
+                        onTap: () {
+                          showModalBottomSheet(
+                            context: context,
+                            isScrollControlled: true,
+                            backgroundColor: Colors.transparent,
+                            builder: (_) => VipMembershipSheet(appState: widget.appState),
+                          );
+                        },
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
+                          decoration: BoxDecoration(
+                            color: widget.appState.isVipMember ? const Color(0xFFFFD700).withOpacity(0.18) : AppTheme.lightGreenBg,
+                            borderRadius: BorderRadius.circular(16),
+                            border: Border.all(
+                              color: widget.appState.isVipMember ? const Color(0xFFFFD700) : AppTheme.primaryGreen.withOpacity(0.3),
+                            ),
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Icon(
+                                Icons.workspace_premium,
+                                size: 15,
+                                color: widget.appState.isVipMember ? const Color(0xFFD97706) : AppTheme.primaryGreen,
+                              ),
+                              const SizedBox(width: 4),
+                              Text(
+                                widget.appState.isVipMember ? 'VIP' : 'Black VIP',
+                                style: TextStyle(
+                                  fontSize: 11,
+                                  fontWeight: FontWeight.w800,
+                                  color: widget.appState.isVipMember ? const Color(0xFFD97706) : AppTheme.primaryGreen,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
                       ),
 
                       // View Switcher: Map vs List (Matching Screen 6 & Screen 7)
@@ -252,6 +305,16 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
                                   context: context,
                                   builder: (_) => TripPlannerDialog(appState: widget.appState),
                                 );
+                              } else if (chip.contains('Rescue') || chip.contains('SOS')) {
+                                showModalBottomSheet(
+                                  context: context,
+                                  isScrollControlled: true,
+                                  backgroundColor: Colors.transparent,
+                                  builder: (_) => MitraRescueSheet(appState: widget.appState),
+                                );
+                              } else if (chip.contains('Solar')) {
+                                state.toggleSolarFilter();
+                                state.setFilterChip(chip);
                               } else {
                                 state.setFilterChip(chip);
                               }
@@ -695,80 +758,9 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
   void _showVoiceSearchDialog(BuildContext context, AppState state) {
     showModalBottomSheet(
       context: context,
-      backgroundColor: Colors.white,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
-      ),
-      builder: (ctx) {
-        return Padding(
-          padding: const EdgeInsets.fromLTRB(20, 20, 20, 32),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Container(
-                width: 40,
-                height: 4,
-                decoration: BoxDecoration(
-                  color: AppTheme.borderLight,
-                  borderRadius: BorderRadius.circular(2),
-                ),
-              ),
-              const SizedBox(height: 20),
-              Container(
-                width: 64,
-                height: 64,
-                decoration: BoxDecoration(
-                  color: AppTheme.lightGreenBg,
-                  shape: BoxShape.circle,
-                  border: Border.all(color: AppTheme.primaryGreen.withOpacity(0.3), width: 2),
-                ),
-                child: const Icon(Icons.mic, color: AppTheme.primaryGreen, size: 32),
-              ),
-              const SizedBox(height: 14),
-              const Text(
-                'Listening for EV Station or Route...',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w800,
-                  color: AppTheme.textPrimary,
-                ),
-              ),
-              const SizedBox(height: 4),
-              const Text(
-                'Try speaking or select a suggested destination:',
-                style: TextStyle(fontSize: 13, color: AppTheme.textSecondary),
-              ),
-              const SizedBox(height: 18),
-              Wrap(
-                spacing: 8,
-                runSpacing: 8,
-                alignment: WrapAlignment.center,
-                children: [
-                  'Fast Chargers near me',
-                  'PlugMitra Hub',
-                  'Delhi to Jaipur NH48',
-                  'GreenCharge Station',
-                  'ChargePoint Hub',
-                ].map((suggestion) {
-                  return ActionChip(
-                    backgroundColor: const Color(0xFFF1F5F9),
-                    label: Text(
-                      suggestion,
-                      style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: AppTheme.textPrimary),
-                    ),
-                    avatar: const Icon(Icons.bolt, size: 14, color: AppTheme.primaryGreen),
-                    onPressed: () {
-                      _searchCtrl.text = suggestion;
-                      state.setSearchQuery(suggestion);
-                      Navigator.of(ctx).pop();
-                    },
-                  );
-                }).toList(),
-              ),
-            ],
-          ),
-        );
-      },
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (_) => VoiceCopilotSheet(appState: widget.appState),
     );
   }
 

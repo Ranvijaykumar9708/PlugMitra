@@ -25,10 +25,27 @@ class AppState extends ChangeNotifier {
   bool _onlyAvailable = false;
   bool _onlyPlugMitra = false;
   bool _only24x7 = false;
+  bool _onlySolar = false;
   List<String> _selectedAmenities = [];
 
   // AutoCharge NFC & RFID
   bool _isAutoChargeEnabled = true;
+
+  // 👑 PlugMitra Black / Gold VIP Club
+  bool _isVipMember = false;
+  String _vipTier = 'PlugMitra Black VIP';
+
+  // 🚨 Mitra Rescue (On-Demand Mobile DC Charging Van SOS)
+  bool _isRescueActive = false;
+  Map<String, dynamic>? _activeRescue;
+
+  // 🌙 Smart ToD (Time-of-Day) Off-Peak Charging Schedule
+  bool _isScheduledChargeActive = false;
+  String _scheduledChargeStartTime = '11:00 PM';
+
+  // 🏢 Fleet Mitra Mode (Enterprise Fleet & Logistics Dashboard)
+  bool _isFleetMode = false;
+  double _fleetWalletBalance = 48500.0;
 
   // Community Issues
   final List<Map<String, dynamic>> _reportedIssues = [];
@@ -69,9 +86,86 @@ class AppState extends ChangeNotifier {
   bool get onlyAvailable => _onlyAvailable;
   bool get onlyPlugMitra => _onlyPlugMitra;
   bool get only24x7 => _only24x7;
+  bool get onlySolar => _onlySolar;
   List<String> get selectedAmenities => _selectedAmenities;
   bool get isAutoChargeEnabled => _isAutoChargeEnabled;
   List<Map<String, dynamic>> get reportedIssues => _reportedIssues;
+
+  // 👑 VIP Getters & Actions
+  bool get isVipMember => _isVipMember;
+  String get vipTier => _vipTier;
+  double get vipDiscountMultiplier => _isVipMember ? 0.75 : 1.0; // 25% discount for VIPs
+
+  void upgradeVipMembership({String tier = 'PlugMitra Black VIP'}) {
+    _isVipMember = true;
+    _vipTier = tier;
+    notifyListeners();
+  }
+
+  void cancelVipMembership() {
+    _isVipMember = false;
+    notifyListeners();
+  }
+
+  // 🚨 Mitra Rescue SOS Getters & Actions
+  bool get isRescueActive => _isRescueActive;
+  Map<String, dynamic>? get activeRescue => _activeRescue;
+
+  void dispatchRescueVan({
+    required String locationAddress,
+    required double targetBoostKwh,
+    required String serviceType,
+  }) {
+    _isRescueActive = true;
+    _activeRescue = {
+      'vanId': 'VAN-DL-04-EV-901',
+      'technicianName': 'Vikram Singh (Certified EV Specialist)',
+      'phone': '+91 98112 34567',
+      'location': locationAddress,
+      'targetBoostKwh': targetBoostKwh,
+      'serviceType': serviceType,
+      'etaMinutes': 14,
+      'batteryChargeKw': 30.0, // 30kW mobile DC rapid charger
+      'status': 'En Route with 30kW Mobile DC Pack',
+      'timestamp': DateTime.now().toIso8601String(),
+    };
+    notifyListeners();
+  }
+
+  void cancelRescueMission() {
+    _isRescueActive = false;
+    _activeRescue = null;
+    notifyListeners();
+  }
+
+  // 🌙 Smart ToD Scheduled Charging
+  bool get isScheduledChargeActive => _isScheduledChargeActive;
+  String get scheduledChargeStartTime => _scheduledChargeStartTime;
+
+  void toggleScheduledCharging(bool enable, {String? time}) {
+    _isScheduledChargeActive = enable;
+    if (time != null) _scheduledChargeStartTime = time;
+    notifyListeners();
+  }
+
+  // 🏢 Fleet Mitra Mode
+  bool get isFleetMode => _isFleetMode;
+  double get fleetWalletBalance => _fleetWalletBalance;
+
+  void toggleFleetMode(bool value) {
+    _isFleetMode = value;
+    notifyListeners();
+  }
+
+  void topUpFleetWallet(double amount) {
+    _fleetWalletBalance += amount;
+    notifyListeners();
+  }
+
+  void toggleSolarFilter() {
+    _onlySolar = !_onlySolar;
+    notifyListeners();
+  }
 
   void toggleAutoCharge(bool value) {
     _isAutoChargeEnabled = value;
@@ -139,12 +233,15 @@ class AppState extends ChangeNotifier {
         if (!s.hasHeavyTruckBay) return false;
       } else if (_selectedFilterChip.contains('PlugMitra Hubs')) {
         if (!s.isPlugMitraOwned) return false;
+      } else if (_selectedFilterChip.contains('Solar')) {
+        if (!s.isSolarPowered) return false;
       }
 
       // 4. Advanced Filters
       if (_onlyAvailable && s.availablePorts <= 0) return false;
       if (_onlyPlugMitra && !s.isPlugMitraOwned) return false;
       if (_only24x7 && !s.isOpen24x7) return false;
+      if (_onlySolar && !s.isSolarPowered) return false;
       if (_minPowerKw > 0.0 && s.maxSpeedKw < _minPowerKw) return false;
       if (_filterConnector != null && !s.connectors.any((c) => c.type.toLowerCase().contains(_filterConnector!.toLowerCase()))) {
         return false;

@@ -47,6 +47,7 @@ class ChargingStation {
   final bool isPlugMitraOwned; // True for our own stations
   final int memberDiscountPercent; // E.g. 15% discount for PlugMitra users
   final bool hasPlugAndCharge; // Auto-handshake without manual verification
+  final bool isSolarPowered; // 100% Certified Green Rooftop Solar / Microgrid
 
   const ChargingStation({
     required this.id,
@@ -70,6 +71,7 @@ class ChargingStation {
     this.isPlugMitraOwned = false,
     this.memberDiscountPercent = 0,
     this.hasPlugAndCharge = false,
+    this.isSolarPowered = false,
   });
 
   int get availablePorts => connectors.where((c) => c.isAvailable).length;
@@ -106,6 +108,7 @@ class ChargingStation {
       isPlugMitraOwned: true,
       memberDiscountPercent: 15,
       hasPlugAndCharge: true,
+      isSolarPowered: true,
       isOpen24x7: true,
       isVerified: true,
       isFastCharger: true,

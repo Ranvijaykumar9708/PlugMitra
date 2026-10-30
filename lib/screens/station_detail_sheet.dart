@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../models/station.dart';
 import '../state/app_state.dart';
 import '../theme/app_theme.dart';
+import '../widgets/tariff_scheduler_dialog.dart';
 
 class StationDetailSheet extends StatefulWidget {
   final ChargingStation station;
@@ -219,6 +220,73 @@ class _StationDetailSheetState extends State<StationDetailSheet> {
                     ),
                     const SizedBox(height: 20),
 
+                    // ☀️ Solar & 🌙 ToD Off-Peak Saver Highlights
+                    Row(
+                      children: [
+                        if (station.isSolarPowered)
+                          Expanded(
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+                              decoration: BoxDecoration(
+                                color: const Color(0xFFE8F5E9),
+                                borderRadius: BorderRadius.circular(12),
+                                border: Border.all(color: const Color(0xFFA5D6A7)),
+                              ),
+                              child: const Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Icon(Icons.solar_power_rounded, size: 16, color: Color(0xFF2E7D32)),
+                                  SizedBox(width: 6),
+                                  Expanded(
+                                    child: Text(
+                                      '100% Solar Green',
+                                      style: TextStyle(fontSize: 11, fontWeight: FontWeight.w700, color: Color(0xFF1B5E20)),
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        if (station.isSolarPowered) const SizedBox(width: 8),
+                        Expanded(
+                          child: InkWell(
+                            onTap: () {
+                              showDialog(
+                                context: context,
+                                builder: (_) => TariffSchedulerDialog(appState: widget.appState),
+                              );
+                            },
+                            borderRadius: BorderRadius.circular(12),
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+                              decoration: BoxDecoration(
+                                color: const Color(0xFFF1F5F9),
+                                borderRadius: BorderRadius.circular(12),
+                                border: Border.all(color: AppTheme.borderLight),
+                              ),
+                              child: const Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Icon(Icons.nightlight_round, size: 14, color: AppTheme.primaryGreen),
+                                  SizedBox(width: 6),
+                                  Expanded(
+                                    child: Text(
+                                      'ToD Saver (₹9.50/u)',
+                                      style: TextStyle(fontSize: 11, fontWeight: FontWeight.w700, color: AppTheme.textPrimary),
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                  ),
+                                  Icon(Icons.arrow_forward_ios, size: 10, color: AppTheme.textMuted),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 18),
+
                     // Available Chargers List (Screen 8)
                     const Text(
                       'Available Chargers',
@@ -234,6 +302,10 @@ class _StationDetailSheetState extends State<StationDetailSheet> {
                       final idx = entry.key;
                       final connector = entry.value;
                       final isSelected = _selectedConnectorIndex == idx;
+                      final isVip = widget.appState.isVipMember;
+                      final displayTariff = isVip
+                          ? (station.effectiveMemberTariff * widget.appState.vipDiscountMultiplier)
+                          : station.effectiveMemberTariff;
 
                       return GestureDetector(
                         onTap: () {
@@ -293,13 +365,22 @@ class _StationDetailSheetState extends State<StationDetailSheet> {
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.end,
                                 children: [
-                                  Text(
-                                    '₹${station.effectiveMemberTariff.toStringAsFixed(0)}/kWh',
-                                    style: const TextStyle(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w800,
-                                      color: AppTheme.textPrimary,
-                                    ),
+                                  Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Text(
+                                        '₹${displayTariff.toStringAsFixed(1)}/kWh',
+                                        style: TextStyle(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w800,
+                                          color: isVip ? const Color(0xFFD97706) : AppTheme.textPrimary,
+                                        ),
+                                      ),
+                                      if (isVip) ...[
+                                        const SizedBox(width: 4),
+                                        const Icon(Icons.workspace_premium, size: 14, color: Color(0xFFD97706)),
+                                      ],
+                                    ],
                                   ),
                                   const SizedBox(height: 2),
                                   Text(

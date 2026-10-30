@@ -12,7 +12,7 @@
 
 ## 📖 About The Project
 
-**PlugMitra** is a production-grade, state-of-the-art Flutter EV charging super-app crafted for the Indian electric mobility ecosystem. It bridges the gap between EV drivers and fragmented charging networks by providing a single, unified interface for discovery, smart reservation, tap-to-charge authentication, live telemetry, and automated payments.
+**PlugMitra** is a production-grade, state-of-the-art Flutter EV charging super-app crafted for the Indian electric mobility ecosystem. It bridges the gap between EV drivers and fragmented charging networks by providing a single, unified interface for discovery, smart reservation, tap-to-charge authentication, live telemetry, automated payments, and exclusive VIP roadside assistance.
 
 Engineered with a clean, high-contrast **Emerald Green & Pure White** design aesthetic, PlugMitra seamlessly supports all electric vehicle segments across India:
 - 🛵 **2-Wheelers** (Ather 450X, Ola S1 Pro, TVS iQube, Ultraviolette)
@@ -23,61 +23,63 @@ Engineered with a clean, high-contrast **Emerald Green & Pure White** design aes
 
 ---
 
-## 🌟 Key Features
+## 👑 Elite & Exclusive Premium Services
 
-### 1. 🎛️ Advanced Multi-Factor EV Filter
-* **Connector Compatibility**: Filter exclusively by `CCS-2`, `Type-2 (AC)`, `CHAdeMO`, `Bharat AC-001`, or `Ather Dot / 16A`.
-* **Charging Speed Slider**: Set minimum power from `3.3 kW` (Slow AC) up to `150 kW+` (Hyper-Fast DC).
-* **Driver Amenities**: Find hubs equipped with `☕ Coffee Shop / Cafe`, `📶 High-Speed Wi-Fi`, `🚻 Restrooms`, and `🛋️ EV Driver Lounge`.
-* **Station Status**: One-tap toggles for `Available Now`, `24x7 Open`, and `⭐ PlugMitra Verified Hubs`.
+### 1. 👑 PlugMitra Black VIP Club (Elite Membership)
+* **Flat 25% Off Super-Tariff**: Automatic discounted rate across all verified hubs (`₹13.50/kWh` instead of `₹18.00/kWh`).
+* **3-Hour Priority Slot Booking**: Block charging bays up to 3 hours in advance with zero queue waiting.
+* **PlugMitra Executive Lounge Access**: Complimentary access to air-conditioned pods, Wi-Fi, work desks & gourmet coffee.
+* **Laser-Engraved Metal Keycard**: Physical matte-black NFC RFID card delivered home.
+* **2x Free Mitra Rescue Dispatches**: Free roadside mobile fast-charging van dispatches annually.
 
-### 2. 🚗 Multi-EV Garage & Dynamic App Adaptation
-* Switch between active vehicles right from the **Discover screen** or the **Profile & Wallet screen**.
-* The entire app (station compatibility, connector list, charging curves, tariff estimates, and range calculations) dynamically adapts to the selected vehicle's battery pack and socket type.
+### 2. 🚨 Mitra Rescue — On-Demand Mobile EV Fast-Charging Van (SOS)
+* **Stranded Driver SOS Dispatch**: Call a Mobile Fast-Charging Van directly to your breakdown GPS coordinates.
+* **30 kW DC Mobile Rapid Boost**: Delivers 15-20 min high-speed boost (+35 to +40 km range) to safely reach the nearest permanent hub.
+* **Emergency roadside assistance**: Includes digital tyre pressure inflator and 12V LiFePO4 auxiliary battery jumpstart.
 
-### 3. 💳 Virtual Tap-to-Charge RFID Keycard & AutoCharge (ISO 15118)
-* **Digital RFID Keycard**: Built-in contactless smart card simulation (`PM-RFID-8921-IN`) with NFC animation for friction-free authentication at charging kiosks.
-* **AutoCharge (Plug & Charge)**: Support for automated gun-plug handshake without requiring QR scanning or manual app actions.
-* **Dual QR & RFID Scanner**: In-app camera scanner featuring animated green laser viewfinder, flashlight toggle, and manual 6-digit Charger ID entry.
+### 3. 🌙 Smart ToD (Time-of-Day) Off-Peak Tariff Optimizer
+* **24-Hour Electricity Tariff Chart**: Dynamic visualization of off-peak hours (11:00 PM – 06:00 AM at ₹9.50/unit) vs peak demand (₹22.50/unit).
+* **Overnight Auto-Charge Scheduler**: Plug the charging gun now; charging automatically starts when off-peak begins.
+* **Real-time Savings Calculator**: Displays exact rupee savings per session (~₹340/session).
 
-### 4. 🔋 Live Telemetry HUD & 80% Sweet-Spot Battery Protection
-* **Radial Telemetry Gauge**: High-contrast, glowing radial meter displaying real-time State-of-Charge (SoC %), charging speed (kW), energy delivered (kWh), voltage (405V), and current (142A).
-* **80% Battery Sweet-Spot Alert**: Smart banner notification advising drivers to stop at 80% SoC to preserve Lithium battery health and avoid thermal tapering costs.
-* **Cost & Timer Tracking**: Live session timer with real-time rupee billing calculation.
+### 4. 🌱 100% Certified Solar Green Energy & ESG Certificates
+* **Solar Microgrid Filter**: Dedicated toggle and map filter to discover charging stations powered 100% by solar and wind.
+* **Verified ESG Renewable Energy Certificate (REC)**: Downloadable and LinkedIn-ready verified carbon avoidance certificates for ESG audits and tax benefits.
 
-### 5. ⭐ Crowdsourced Community Reviews & Broken Gun Reporting
-* **Driver Star Ratings**: Authentic community reviews from verified EV drivers with date and vehicle stamps.
-* **Crowdsourced Issue Reporting**: In-sheet reporting for `Broken Gun`, `ICEing (Petrol car blocking bay)`, `Offline Kiosk`, or `Slow Power Delivery`.
-* **Active Issue Tracking**: Logged reports appear in the user's Profile screen under **"My Reported Station Issues"** with real-time status tracking.
+### 5. 🏢 Fleet Mitra — Commercial EV Fleet Control & Logistics Dashboard
+* **Centralized Corporate FastWallet**: Multi-driver shared wallet balance (`₹48,500.00`) with consolidated monthly GST tax reports.
+* **Live Fleet Roster & Telemetry**: Monitor battery levels, active charging sessions, and transit routes across delivery trucks and cargo 3-wheelers.
 
-### 6. ⚡ EV vs Petrol Fuel Savings & Carbon Calculator
-* Interactive daily commute slider (10 km to 200 km).
-* Real-time monthly and annual cost savings comparison (EV at ₹1.25/km vs Petrol at ₹7.50/km).
-* Environmental impact counter displaying monthly **CO₂ emissions eliminated** and equivalent **trees planted**.
-
-### 7. 📅 Advance Slot Booking & Boarding-Pass Tickets
-* Reserve charging slots ahead of arrival to eliminate queue anxiety.
-* Boarding-pass style QR ticket with unique Gun Unlock PIN, slot duration, and directions shortcut.
-
-### 8. 🧾 GST Tax Invoice & FastWallet
-* Instant UPI AutoPay wallet top-ups (₹500, ₹1000, ₹2000).
-* Complete transaction history with downloadable GST-compliant Tax Invoices for business expense reimbursement.
+### 6. 🎙️ Hey Mitra — AI Smart Voice Co-Pilot (Bilingual)
+* **Natural Voice Commands**: Hands-free voice navigation in Hindi and English.
+* **Intelligent Query Interpretation**: *"Agra Expressway 60kW charger with coffee"* or *"Nearest 2-wheeler Ather charger"*.
 
 ---
 
-## 📱 Architecture & Flow
+## 🌟 Core App Features
 
-| Screen | Design Focus | Highlights |
-| :--- | :--- | :--- |
-| **01. Splash & Onboarding** | Clean Emerald White | Quick feature walkthrough with vehicle category highlights |
-| **02. Discover & Radar** | Interactive Map & List | Live station markers, quick chips, multi-EV vehicle switcher |
-| **03. Station Detail** | Sheet Modal | Socket availability, power rates, driver reviews & issue reporting |
-| **04. Advanced Filter** | Bottom Sheet | Power slider, socket types, amenities & verified hub toggles |
-| **05. Scan & Charge** | Dark HUD | Animated laser scanner, Virtual RFID tap, manual ID dialog |
-| **06. Live Charging** | Dark Telemetry | Circular gauge, 80% sweet-spot alert, emergency stop dialog |
-| **07. Session Completed** | Success Receipt | Total kWh, amount, green carbon offset badge & tax invoice |
-| **08. Slot Booking** | Reservation Flow | Time slot selector, tariff calculation, QR boarding pass |
-| **09. Wallet & Profile** | Account & EV Garage | Virtual RFID card, AutoCharge toggle, savings calculator |
+### 🎛️ Advanced Multi-Factor EV Filter
+* Filter by socket type (`CCS-2`, `Type-2`, `CHAdeMO`, `Bharat AC-001`, `Ather Dot / 16A`).
+* Minimum power slider (3.3 kW to 150 kW+), driver amenities (`Coffee`, `Wi-Fi`, `Restrooms`, `Lounge`), and 24x7 status.
+
+### 🚗 Multi-EV Garage & Dynamic App Adaptation
+* Switch between active vehicles from the Discover screen or Profile screen. All station compatibility, tariffs, and range adapt dynamically.
+
+### 💳 Virtual Tap-to-Charge RFID Keycard & AutoCharge (ISO 15118)
+* Built-in contactless smart card simulation (`PM-RFID-8921-IN`) with NFC animation.
+* ISO 15118 Plug & Charge support for seamless gun connection without scanning.
+
+### 🔋 Live Telemetry HUD & 80% Sweet-Spot Battery Protection
+* Radial telemetry gauge displaying SoC %, charging speed (kW), energy delivered (kWh), voltage (405V), and current (142A).
+* 80% sweet-spot protection alert to preserve battery longevity.
+
+### ⭐ Crowdsourced Community Reviews & Broken Gun Reporting
+* Authentic driver star ratings with vehicle stamps.
+* In-app issue reporting for `Broken Gun`, `ICEing (Petrol car blocking bay)`, `Offline Kiosk`, or `Slow Charging`.
+
+### ⚡ EV vs Petrol Fuel Savings & Carbon Calculator
+* Real-time monthly and annual cost savings comparison (EV at ₹1.25/km vs Petrol at ₹7.50/km).
+* Environmental impact counter displaying monthly CO₂ emissions eliminated and trees planted.
 
 ---
 
@@ -90,10 +92,10 @@ lib/
 │   └── app_theme.dart         # Emerald Green, Mint Glow & Dark HUD theme tokens
 ├── models/
 │   ├── vehicle.dart           # VehicleCategory (2W, 3W, 4W, Truck, Bus) & Garage presets
-│   ├── station.dart           # Charging station, operator metadata, connector sockets
+│   ├── station.dart           # Charging station, operator metadata, solar flags & sockets
 │   └── charging_session.dart  # Telemetry engine, dynamic power curves & billing
 ├── state/
-│   └── app_state.dart         # Centralized ChangeNotifier for filters, vehicle selection & sessions
+│   └── app_state.dart         # Centralized ChangeNotifier for VIP, Rescue, Fleet & sessions
 ├── widgets/
 │   ├── advanced_filter_sheet.dart # Multi-factor filter modal (connectors, kW, amenities)
 │   ├── charging_gauge.dart    # High-contrast radial telemetry gauge with glow
@@ -101,16 +103,22 @@ lib/
 │   ├── station_card.dart      # Clean station card with status chips and distance
 │   ├── connector_badge.dart   # Interactive socket chip with live status
 │   ├── booking_ticket_dialog.dart # Boarding-pass QR ticket modal
-│   └── tax_invoice_dialog.dart# GST-compliant charging invoice dialog
+│   ├── tax_invoice_dialog.dart# GST-compliant charging invoice dialog
+│   ├── vip_membership_sheet.dart  # 👑 PlugMitra Black VIP Club membership modal
+│   ├── mitra_rescue_sheet.dart    # 🚨 On-Demand Mobile DC Charging Van SOS
+│   ├── tariff_scheduler_dialog.dart # 🌙 Smart ToD off-peak charging optimizer
+│   ├── esg_certificate_dialog.dart # 🌱 100% Certified Clean Energy Certificate
+│   ├── fleet_mitra_sheet.dart     # 🏢 Commercial EV Fleet Control Dashboard
+│   └── voice_copilot_sheet.dart   # 🎙️ Hey Mitra AI Smart Voice Co-Pilot
 └── screens/
     ├── main_shell.dart        # 5-Tab shell with adaptive navigation bar & mini telemetry pill
     ├── discover_screen.dart   # Search, map/list view, vehicle picker & quick filters
     ├── scan_qr_screen.dart    # Viewfinder, animated laser, Virtual RFID tap & manual ID
     ├── live_charging_screen.dart # Real-time telemetry dashboard & 80% battery alert
-    ├── charging_completed_screen.dart # Completion receipt & invoice download modal
+    ├── charging_completed_screen.dart # Completion receipt, ESG certificate & tax invoice
     ├── booking_screen.dart    # Advance slot reservation workflow & pass manager
     ├── station_detail_sheet.dart # Connector selector, community reviews & issue reporting
-    ├── wallet_profile_screen.dart# Mitra wallet, Virtual RFID card, AutoCharge & savings calculator
+    ├── wallet_profile_screen.dart# Mitra wallet, VIP club, Fleet portal & savings calculator
     └── profile_setup_screen.dart # Vehicle specs manager & registration editor
 ```
 
@@ -121,14 +129,13 @@ lib/
 ### Prerequisites
 * [Flutter SDK](https://docs.flutter.dev/get-started/install) (v3.20.0 or higher)
 * [Dart SDK](https://dart.dev/get-dart) (v3.4.0 or higher)
-* Android Studio / Xcode / VS Code with Flutter extension
 
 ### Installation
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/your-username/plugmitra.git
-cd plugmitra
+git clone https://github.com/Ranvijaykumar9708/PlugMitra.git
+cd PlugMitra
 
 # 2. Install dependencies
 flutter pub get

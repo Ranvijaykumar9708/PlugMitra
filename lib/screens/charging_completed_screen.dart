@@ -3,6 +3,7 @@ import '../models/charging_session.dart';
 import '../theme/app_theme.dart';
 
 import '../widgets/tax_invoice_dialog.dart';
+import '../widgets/esg_certificate_dialog.dart';
 
 class ChargingCompletedScreen extends StatelessWidget {
   final ChargingSession session;
@@ -151,6 +152,32 @@ class ChargingCompletedScreen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(16),
                     ),
                     elevation: 0,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 10),
+              // View Certified ESG Clean Energy Certificate Button
+              SizedBox(
+                width: double.infinity,
+                child: OutlinedButton.icon(
+                  onPressed: () {
+                    showDialog(
+                      context: context,
+                      builder: (_) => EsgCertificateDialog(session: session),
+                    );
+                  },
+                  icon: const Icon(Icons.verified_outlined, size: 18, color: Color(0xFF10B981)),
+                  label: const Text(
+                    'View Certified 100% Solar ESG Certificate',
+                    style: TextStyle(fontSize: 13, fontWeight: FontWeight.w700, color: Color(0xFF10B981)),
+                  ),
+                  style: OutlinedButton.styleFrom(
+                    side: const BorderSide(color: Color(0xFF10B981), width: 1.2),
+                    backgroundColor: const Color(0xFFECFDF5),
+                    padding: const EdgeInsets.symmetric(vertical: 13),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(16),
+                    ),
                   ),
                 ),
               ),

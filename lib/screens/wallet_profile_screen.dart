@@ -4,6 +4,10 @@ import '../state/app_state.dart';
 import '../theme/app_theme.dart';
 import 'profile_setup_screen.dart';
 import '../widgets/tax_invoice_dialog.dart';
+import '../widgets/vip_membership_sheet.dart';
+import '../widgets/mitra_rescue_sheet.dart';
+import '../widgets/fleet_mitra_sheet.dart';
+import '../widgets/tariff_scheduler_dialog.dart';
 
 class WalletProfileScreen extends StatefulWidget {
   final AppState appState;
@@ -376,6 +380,201 @@ class _WalletProfileScreenState extends State<WalletProfileScreen> {
                 ),
               ],
             ),
+          ),
+          const SizedBox(height: 16),
+
+          // 👑 PlugMitra Black VIP Club Card
+          Container(
+            padding: const EdgeInsets.all(18),
+            decoration: BoxDecoration(
+              gradient: const LinearGradient(
+                colors: [Color(0xFF1E293B), Color(0xFF0F172A)],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ),
+              borderRadius: BorderRadius.circular(20),
+              border: Border.all(
+                color: widget.appState.isVipMember ? const Color(0xFFFFD700) : Colors.white12,
+                width: 1.2,
+              ),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.08),
+                  blurRadius: 10,
+                  offset: const Offset(0, 3),
+                ),
+              ],
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        const Icon(Icons.workspace_premium, color: Color(0xFFFFD700), size: 22),
+                        const SizedBox(width: 8),
+                        Text(
+                          widget.appState.isVipMember ? 'PlugMitra Black VIP Active' : 'Join PlugMitra Black VIP Club',
+                          style: const TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w800,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                      decoration: BoxDecoration(
+                        color: const Color(0xFFFFD700).withOpacity(0.18),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Text(
+                        widget.appState.isVipMember ? '25% OFF' : 'UPGRADE',
+                        style: const TextStyle(fontSize: 10, fontWeight: FontWeight.w800, color: Color(0xFFFFD700)),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  widget.appState.isVipMember
+                      ? 'Enjoy 25% super-tariff discount, 3-hour priority reservations, and executive lounge access.'
+                      : 'Unlock 25% tariff savings across India, executive lounges & laser-engraved metal RFID card.',
+                  style: const TextStyle(fontSize: 12, color: Colors.white70, height: 1.3),
+                ),
+                const SizedBox(height: 12),
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      showModalBottomSheet(
+                        context: context,
+                        isScrollControlled: true,
+                        backgroundColor: Colors.transparent,
+                        builder: (_) => VipMembershipSheet(appState: widget.appState),
+                      ).then((_) => setState(() {}));
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xFFFFD700),
+                      foregroundColor: Colors.black,
+                      elevation: 0,
+                      padding: const EdgeInsets.symmetric(vertical: 10),
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                    ),
+                    child: Text(
+                      widget.appState.isVipMember ? 'Manage VIP Membership' : 'Join PlugMitra Black VIP',
+                      style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 13),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 12),
+
+          // ⚡ Elite Services Quick Bar: Fleet Mitra & Mitra Rescue SOS & ToD Saver
+          Row(
+            children: [
+              Expanded(
+                child: InkWell(
+                  onTap: () {
+                    showModalBottomSheet(
+                      context: context,
+                      isScrollControlled: true,
+                      backgroundColor: Colors.transparent,
+                      builder: (_) => FleetMitraSheet(appState: widget.appState),
+                    );
+                  },
+                  borderRadius: BorderRadius.circular(14),
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(14),
+                      border: Border.all(color: AppTheme.borderLight),
+                    ),
+                    child: const Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.local_shipping_outlined, color: Colors.blueAccent, size: 16),
+                        SizedBox(width: 4),
+                        Text(
+                          'Fleet Mitra',
+                          style: TextStyle(fontWeight: FontWeight.w700, fontSize: 11, color: AppTheme.textPrimary),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(width: 8),
+              Expanded(
+                child: InkWell(
+                  onTap: () {
+                    showModalBottomSheet(
+                      context: context,
+                      isScrollControlled: true,
+                      backgroundColor: Colors.transparent,
+                      builder: (_) => MitraRescueSheet(appState: widget.appState),
+                    );
+                  },
+                  borderRadius: BorderRadius.circular(14),
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(14),
+                      border: Border.all(color: AppTheme.borderLight),
+                    ),
+                    child: const Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.emergency_outlined, color: Colors.redAccent, size: 16),
+                        SizedBox(width: 4),
+                        Text(
+                          'Rescue SOS',
+                          style: TextStyle(fontWeight: FontWeight.w700, fontSize: 11, color: AppTheme.textPrimary),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(width: 8),
+              Expanded(
+                child: InkWell(
+                  onTap: () {
+                    showDialog(
+                      context: context,
+                      builder: (_) => TariffSchedulerDialog(appState: widget.appState),
+                    );
+                  },
+                  borderRadius: BorderRadius.circular(14),
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(14),
+                      border: Border.all(color: AppTheme.borderLight),
+                    ),
+                    child: const Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.nightlight_round, color: AppTheme.primaryGreen, size: 16),
+                        SizedBox(width: 4),
+                        Text(
+                          'ToD Saver',
+                          style: TextStyle(fontWeight: FontWeight.w700, fontSize: 11, color: AppTheme.textPrimary),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
           const SizedBox(height: 20),
 
