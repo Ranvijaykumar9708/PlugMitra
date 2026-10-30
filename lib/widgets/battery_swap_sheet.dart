@@ -123,10 +123,15 @@ class _BatterySwapSheetState extends State<BatterySwapSheet> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Text(
-                        'Cabinet #08 • Cyber Hub Gurugram',
-                        style: TextStyle(fontSize: 13, fontWeight: FontWeight.w800, color: Colors.white),
+                      const Expanded(
+                        child: Text(
+                          'Cabinet #08 • Cyber Hub Gurugram',
+                          style: TextStyle(fontSize: 13, fontWeight: FontWeight.w800, color: Colors.white),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
                       ),
+                      const SizedBox(width: 8),
                       Container(
                         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
                         decoration: BoxDecoration(

@@ -462,7 +462,7 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
           left: 0,
           right: 0,
           bottom: 86,
-          height: 145,
+          height: 168,
           child: Column(
             children: [
               // Navigation / Counter Pill Bar
@@ -579,7 +579,7 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
 
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 6),
-      padding: const EdgeInsets.all(12),
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(18),
@@ -647,7 +647,7 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
               ),
             ],
           ),
-          const SizedBox(height: 8),
+          const SizedBox(height: 6),
 
           // Main Row: Thumbnail + Info + View Button
           InkWell(

@@ -528,22 +528,25 @@ class LiveChargingScreen extends StatelessWidget {
                   },
                   borderRadius: BorderRadius.circular(14),
                   child: Container(
-                    padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
+                    padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 4),
                     decoration: BoxDecoration(
                       color: AppTheme.chargingCard,
                       borderRadius: BorderRadius.circular(14),
                       border: Border.all(color: const Color(0xFF8B5CF6).withOpacity(0.5)),
                     ),
-                    child: const Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(Icons.sports_esports_outlined, color: Color(0xFFC084FC), size: 16),
-                        SizedBox(width: 4),
-                        Text(
-                          'Lounge & Games',
-                          style: TextStyle(fontSize: 11, fontWeight: FontWeight.w700, color: Colors.white),
-                        ),
-                      ],
+                    child: const FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.sports_esports_outlined, color: Color(0xFFC084FC), size: 16),
+                          SizedBox(width: 4),
+                          Text(
+                            'Lounge & Games',
+                            style: TextStyle(fontSize: 11, fontWeight: FontWeight.w700, color: Colors.white),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -561,22 +564,25 @@ class LiveChargingScreen extends StatelessWidget {
                   },
                   borderRadius: BorderRadius.circular(14),
                   child: Container(
-                    padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
+                    padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 4),
                     decoration: BoxDecoration(
                       color: AppTheme.chargingCard,
                       borderRadius: BorderRadius.circular(14),
                       border: Border.all(color: AppTheme.electricMint.withOpacity(0.4)),
                     ),
-                    child: const Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(Icons.currency_rupee, color: AppTheme.electricMint, size: 16),
-                        SizedBox(width: 4),
-                        Text(
-                          'V2G Grid Sell',
-                          style: TextStyle(fontSize: 11, fontWeight: FontWeight.w700, color: Colors.white),
-                        ),
-                      ],
+                    child: const FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.currency_rupee, color: AppTheme.electricMint, size: 16),
+                          SizedBox(width: 4),
+                          Text(
+                            'V2G Grid Sell',
+                            style: TextStyle(fontSize: 11, fontWeight: FontWeight.w700, color: Colors.white),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -592,22 +598,25 @@ class LiveChargingScreen extends StatelessWidget {
                   },
                   borderRadius: BorderRadius.circular(14),
                   child: Container(
-                    padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
+                    padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 4),
                     decoration: BoxDecoration(
                       color: AppTheme.chargingCard,
                       borderRadius: BorderRadius.circular(14),
                       border: Border.all(color: AppTheme.chargingBorder),
                     ),
-                    child: const Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(Icons.health_and_safety_outlined, color: AppTheme.electricCyan, size: 16),
-                        SizedBox(width: 4),
-                        Text(
-                          'Battery SoH',
-                          style: TextStyle(fontSize: 11, fontWeight: FontWeight.w700, color: Colors.white),
-                        ),
-                      ],
+                    child: const FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.health_and_safety_outlined, color: AppTheme.electricCyan, size: 16),
+                          SizedBox(width: 4),
+                          Text(
+                            'Battery SoH',
+                            style: TextStyle(fontSize: 11, fontWeight: FontWeight.w700, color: Colors.white),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
