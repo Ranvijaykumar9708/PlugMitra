@@ -526,6 +526,8 @@ class AppState extends ChangeNotifier {
     notifyListeners();
   }
 
+  void topUpWallet(double amount) => addWalletBalance(amount);
+
   void startChargingSession({
     required ChargingStation station,
     required ConnectorInfo connector,

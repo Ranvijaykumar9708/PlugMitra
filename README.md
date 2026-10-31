@@ -126,8 +126,20 @@ lib/
 │   ├── station.dart                   # Charging station, operator metadata, solar flags & sockets
 │   └── charging_session.dart          # Telemetry engine, dynamic power curves & billing
 ├── state/
-│   └── app_state.dart                 # Centralized ChangeNotifier for VIP, Rescue, Fleet, V2G, SoH, IoT & P2P
+│   └── app_state.dart                 # Centralized Domain Store & business logic facade
+├── localization/
+│   └── app_localizations.dart         # Bilingual (English 🇬🇧 & हिंदी 🇮🇳) dictionaries, delegates & tr() helper
+├── viewmodels/
+│   ├── locale_viewmodel.dart          # Dynamic in-app locale toggle & language state
+│   ├── discover_viewmodel.dart        # Station search, category filtering & map/list state
+│   ├── charging_viewmodel.dart        # Real-time telemetry, session controls & pause/stop state
+│   └── wallet_viewmodel.dart          # FastWallet balance, VIP status, carbon tokens & vehicle picker
 ├── widgets/
+│   ├── common/                        # 🎨 Reusable Design System Components
+│   │   ├── primary_button.dart        # Tactile emerald green CTA with haptics & loading state
+│   │   ├── status_chip.dart           # Standardized status badges (Available, Occupied, Fast DC)
+│   │   ├── custom_card.dart           # Unified card container with rounded borders & tap ripples
+│   │   └── language_switcher_dialog.dart # Bilingual switcher modal (English ↔ हिंदी)
 │   ├── advanced_filter_sheet.dart     # Multi-factor filter modal (connectors, kW, amenities)
 │   ├── charging_gauge.dart            # High-contrast radial telemetry gauge with glow
 │   ├── map_preview_widget.dart        # Interactive visual EV grid map with live status pins
@@ -164,6 +176,37 @@ lib/
     ├── wallet_profile_screen.dart     # Mitra wallet, VIP club, Tokens, P2P Host & Shield
     └── profile_setup_screen.dart     # Vehicle specs manager & registration editor
 ```
+
+---
+
+## 🏛️ Architecture & Engineering Best Practices
+
+PlugMitra implements a strict, enterprise-ready **Model-View-ViewModel (MVVM)** pattern powered by **Provider** and full **Bilingual Internationalization (i18n)**:
+
+### 1. 🏗️ MVVM (Model-View-ViewModel) Pattern
+* **Model Layer (`lib/models/`)**: Pure domain models and telemetry contracts (`EVVehicle`, `ChargingStation`, `ChargingSession`). They are platform-agnostic and encapsulate core business rules and physics simulations.
+* **ViewModel Layer (`lib/viewmodels/`)**: Dedicated presentation logic (`DiscoverViewModel`, `ChargingViewModel`, `WalletViewModel`, `LocaleViewModel`). ViewModels expose clean, immutable getters, manage UI state transforms, and reactively notify listeners.
+* **View Layer (`lib/screens/` & `lib/widgets/`)**: Declarative Flutter widgets that consume ViewModels via `Provider`. Views contain zero complex business logic and focus purely on smooth 60fps rendering, micro-animations, and user interactions.
+
+### 2. ⚡ State Management with Provider
+* Root-level `MultiProvider` configuration in `lib/main.dart`.
+* `ChangeNotifierProvider<AppState>` serving as the unified domain store and repository layer.
+* `ChangeNotifierProxyProvider<AppState, ViewModel>` binding presentation ViewModels to live domain state changes.
+* Granular UI updates using `context.watch<T>()` and `context.read<T>()` to eliminate unnecessary widget rebuilds.
+
+### 3. 🌐 Dynamic Localization (English & हिंदी)
+* Comprehensive bilingual dictionary in `lib/localization/app_localizations.dart`.
+* Instant in-app language switching via `LanguageSwitcherDialog` with zero app reload required.
+* Clean and concise syntax via `BuildContext` extension: `context.tr('key')`.
+* Full support for Hindi localization tailored for Indian EV drivers, cab operators, and fleet drivers.
+
+### 4. 🧩 Modular Reusable Widget System
+* Standardized design tokens in `AppTheme` with custom typography and color palettes.
+* Reusable components in `lib/widgets/common/`:
+  - `PrimaryButton`: Haptic feedback, customizable gradient, disabled states, and animated loading spinner.
+  - `StatusChip`: Standardized badge for statuses (Available, Occupied, Fast DC, Swapping).
+  - `CustomCard`: Consistent rounded borders, surface elevation, and tactile ink splash.
+  - `LanguageSwitcherDialog`: Interactive modal dialog with national flag badges and instant locale switching.
 
 ---
 

@@ -38,6 +38,8 @@ class ChargingSession extends ChangeNotifier {
   double get targetPercent => _targetPercent;
   double get energyDeliveredKwh => _energyDeliveredKwh;
   double get currentPowerKw => _currentPowerKw;
+  double get currentSpeedKw => _currentPowerKw;
+  bool get isPaused => _status == SessionStatus.paused;
   double get voltageVolts => _voltageVolts;
   double get currentAmps => _currentAmps;
   int get elapsedSeconds => _elapsedSeconds;
@@ -120,6 +122,12 @@ class ChargingSession extends ChangeNotifier {
       _ticker?.cancel();
       notifyListeners();
     } else if (_status == SessionStatus.paused) {
+      startCharging();
+    }
+  }
+
+  void resumeCharging() {
+    if (_status == SessionStatus.paused) {
       startCharging();
     }
   }

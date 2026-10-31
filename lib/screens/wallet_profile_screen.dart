@@ -17,6 +17,7 @@ import '../widgets/mitra_shield_dialog.dart';
 import '../widgets/home_sync_sheet.dart';
 import '../widgets/p2p_sharing_sheet.dart';
 import '../widgets/highway_corridor_dialog.dart';
+import '../widgets/common/language_switcher_dialog.dart';
 
 class WalletProfileScreen extends StatefulWidget {
   final AppState appState;
@@ -131,6 +132,16 @@ class _WalletProfileScreenState extends State<WalletProfileScreen> {
           style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w800, color: AppTheme.textPrimary),
         ),
         actions: [
+          IconButton(
+            icon: const Icon(Icons.language_rounded, color: AppTheme.primaryGreen),
+            tooltip: 'Language / भाषा',
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (_) => const LanguageSwitcherDialog(),
+              );
+            },
+          ),
           IconButton(
             icon: Icon(
               _activeTopTab == 0 ? Icons.account_circle_outlined : Icons.history,

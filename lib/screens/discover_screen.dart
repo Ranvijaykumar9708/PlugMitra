@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../localization/app_localizations.dart';
 import '../models/station.dart';
 import '../models/vehicle.dart';
 import '../state/app_state.dart';
 import '../theme/app_theme.dart';
+import '../viewmodels/locale_viewmodel.dart';
 import '../widgets/advanced_filter_sheet.dart';
+import '../widgets/common/language_switcher_dialog.dart';
 import '../widgets/map_preview_widget.dart';
 import '../widgets/station_card.dart';
 import '../widgets/trip_planner_dialog.dart';
@@ -161,6 +165,37 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
                         ],
                       ),
 
+                      // 🌐 Language Switcher Pill
+                      GestureDetector(
+                        onTap: () {
+                          showDialog(
+                            context: context,
+                            builder: (_) => const LanguageSwitcherDialog(),
+                          );
+                        },
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(16),
+                            border: Border.all(color: AppTheme.borderLight),
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text(
+                                context.watch<LocaleViewModel>().isHindi ? '🇮🇳 HI' : '🇬🇧 EN',
+                                style: const TextStyle(
+                                  fontSize: 11,
+                                  fontWeight: FontWeight.w800,
+                                  color: AppTheme.textPrimary,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+
                       // 👑 VIP Club Access
                       GestureDetector(
                         onTap: () {
@@ -256,13 +291,13 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
                             controller: _searchCtrl,
                             onChanged: (val) => state.setSearchQuery(val),
                             style: const TextStyle(color: AppTheme.textPrimary, fontSize: 14),
-                            decoration: const InputDecoration(
-                              hintText: 'Search charging stations, hubs...',
-                              hintStyle: TextStyle(color: AppTheme.textMuted, fontSize: 14),
+                            decoration: InputDecoration(
+                              hintText: context.tr('search_hint'),
+                              hintStyle: const TextStyle(color: AppTheme.textMuted, fontSize: 14),
                               border: InputBorder.none,
                               enabledBorder: InputBorder.none,
                               focusedBorder: InputBorder.none,
-                              contentPadding: EdgeInsets.symmetric(vertical: 14),
+                              contentPadding: const EdgeInsets.symmetric(vertical: 14),
                             ),
                           ),
                         ),
