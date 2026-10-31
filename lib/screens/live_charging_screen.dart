@@ -513,187 +513,107 @@ class LiveChargingScreen extends StatelessWidget {
           ),
           const SizedBox(height: 14),
 
-          // ⚡ In-Car Lounge, V2G & Battery Doctor Elite Row
-          Row(
-            children: [
-              Expanded(
-                child: InkWell(
-                  onTap: () {
-                    showModalBottomSheet(
-                      context: context,
-                      isScrollControlled: true,
-                      backgroundColor: Colors.transparent,
-                      builder: (_) => ArcadeZenLoungeSheet(appState: appState),
-                    );
-                  },
-                  borderRadius: BorderRadius.circular(14),
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 4),
-                    decoration: BoxDecoration(
-                      color: AppTheme.chargingCard,
-                      borderRadius: BorderRadius.circular(14),
-                      border: Border.all(color: const Color(0xFF8B5CF6).withOpacity(0.5)),
-                    ),
-                    child: const FittedBox(
-                      fit: BoxFit.scaleDown,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(Icons.sports_esports_outlined, color: Color(0xFFC084FC), size: 16),
-                          SizedBox(width: 4),
-                          Text(
-                            'Lounge & Games',
-                            style: TextStyle(fontSize: 11, fontWeight: FontWeight.w700, color: Colors.white),
-                          ),
-                        ],
-                      ),
-                    ),
+          // ⚡ In-Car Experience & Smart Services Deck
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 4),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  'In-Car Comfort & Services',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w800,
+                    fontSize: 13,
+                    letterSpacing: -0.2,
                   ),
                 ),
-              ),
-              const SizedBox(width: 8),
-              Expanded(
-                child: InkWell(
-                  onTap: () {
-                    showModalBottomSheet(
-                      context: context,
-                      isScrollControlled: true,
-                      backgroundColor: Colors.transparent,
-                      builder: (_) => V2gMonetizationSheet(appState: appState),
-                    );
-                  },
-                  borderRadius: BorderRadius.circular(14),
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 4),
-                    decoration: BoxDecoration(
-                      color: AppTheme.chargingCard,
-                      borderRadius: BorderRadius.circular(14),
-                      border: Border.all(color: AppTheme.electricMint.withOpacity(0.4)),
-                    ),
-                    child: const FittedBox(
-                      fit: BoxFit.scaleDown,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(Icons.currency_rupee, color: AppTheme.electricMint, size: 16),
-                          SizedBox(width: 4),
-                          Text(
-                            'V2G Grid Sell',
-                            style: TextStyle(fontSize: 11, fontWeight: FontWeight.w700, color: Colors.white),
-                          ),
-                        ],
-                      ),
-                    ),
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                  decoration: BoxDecoration(
+                    color: AppTheme.electricMint.withOpacity(0.15),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: const Text(
+                    '5 Services Active',
+                    style: TextStyle(color: AppTheme.electricMint, fontWeight: FontWeight.bold, fontSize: 10),
                   ),
                 ),
-              ),
-              const SizedBox(width: 8),
-              Expanded(
-                child: InkWell(
-                  onTap: () {
-                    showDialog(
-                      context: context,
-                      builder: (_) => BatteryDoctorDialog(appState: appState),
-                    );
-                  },
-                  borderRadius: BorderRadius.circular(14),
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 4),
-                    decoration: BoxDecoration(
-                      color: AppTheme.chargingCard,
-                      borderRadius: BorderRadius.circular(14),
-                      border: Border.all(color: AppTheme.chargingBorder),
-                    ),
-                    child: const FittedBox(
-                      fit: BoxFit.scaleDown,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(Icons.health_and_safety_outlined, color: AppTheme.electricCyan, size: 16),
-                          SizedBox(width: 4),
-                          Text(
-                            'Battery SoH',
-                            style: TextStyle(fontSize: 11, fontWeight: FontWeight.w700, color: Colors.white),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ],
+              ],
+            ),
           ),
-          const SizedBox(height: 8),
+          const SizedBox(height: 10),
 
-          // ☕ Bay Delivery (Food to Car) & 🛡️ Mitra Shield Protection Row
-          Row(
-            children: [
-              Expanded(
-                child: InkWell(
-                  onTap: () {
-                    showModalBottomSheet(
-                      context: context,
-                      isScrollControlled: true,
-                      backgroundColor: Colors.transparent,
-                      builder: (_) => BayDeliverySheet(appState: appState),
-                    );
-                  },
-                  borderRadius: BorderRadius.circular(14),
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
-                    decoration: BoxDecoration(
-                      color: AppTheme.chargingCard,
-                      borderRadius: BorderRadius.circular(14),
-                      border: Border.all(color: const Color(0xFFFB7185).withOpacity(0.4)),
-                    ),
-                    child: const Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(Icons.takeout_dining_rounded, color: Color(0xFFFB7185), size: 16),
-                        SizedBox(width: 4),
-                        Text(
-                          'Bay Dine-In',
-                          style: TextStyle(fontSize: 11, fontWeight: FontWeight.w700, color: Colors.white),
-                        ),
-                      ],
-                    ),
+          // Horizontal scrollable luxury cards with touch ripple
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                _buildInSessionCard(
+                  title: 'Arcade & Zen',
+                  subtitle: 'Games, OTT & Sleep Pod',
+                  badge: 'Fun',
+                  icon: Icons.sports_esports_rounded,
+                  iconColor: const Color(0xFFC084FC),
+                  onTap: () => showModalBottomSheet(
+                    context: context,
+                    isScrollControlled: true,
+                    backgroundColor: Colors.transparent,
+                    builder: (_) => ArcadeZenLoungeSheet(appState: appState),
                   ),
                 ),
-              ),
-              const SizedBox(width: 8),
-              Expanded(
-                child: InkWell(
-                  onTap: () {
-                    showDialog(
-                      context: context,
-                      builder: (_) => MitraShieldDialog(appState: appState),
-                    );
-                  },
-                  borderRadius: BorderRadius.circular(14),
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
-                    decoration: BoxDecoration(
-                      color: AppTheme.chargingCard,
-                      borderRadius: BorderRadius.circular(14),
-                      border: Border.all(color: const Color(0xFF38BDF8).withOpacity(0.4)),
-                    ),
-                    child: const Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(Icons.shield_rounded, color: Color(0xFF38BDF8), size: 16),
-                        SizedBox(width: 4),
-                        Text(
-                          'Mitra Shield',
-                          style: TextStyle(fontSize: 11, fontWeight: FontWeight.w700, color: Colors.white),
-                        ),
-                      ],
-                    ),
+                _buildInSessionCard(
+                  title: 'Bay Dine-In',
+                  subtitle: 'Food to car window',
+                  badge: '8 min ETA',
+                  icon: Icons.takeout_dining_rounded,
+                  iconColor: const Color(0xFFFB7185),
+                  onTap: () => showModalBottomSheet(
+                    context: context,
+                    isScrollControlled: true,
+                    backgroundColor: Colors.transparent,
+                    builder: (_) => BayDeliverySheet(appState: appState),
                   ),
                 ),
-              ),
-            ],
+                _buildInSessionCard(
+                  title: 'Battery SoH',
+                  subtitle: '98.2% Health Report',
+                  badge: 'Class A+',
+                  icon: Icons.health_and_safety_rounded,
+                  iconColor: AppTheme.electricCyan,
+                  onTap: () => showDialog(
+                    context: context,
+                    builder: (_) => BatteryDoctorDialog(appState: appState),
+                  ),
+                ),
+                _buildInSessionCard(
+                  title: 'V2G Grid Sell',
+                  subtitle: 'Earn ₹18.50/kWh peak',
+                  badge: '₹420/day',
+                  icon: Icons.currency_rupee_rounded,
+                  iconColor: AppTheme.electricMint,
+                  onTap: () => showModalBottomSheet(
+                    context: context,
+                    isScrollControlled: true,
+                    backgroundColor: Colors.transparent,
+                    builder: (_) => V2gMonetizationSheet(appState: appState),
+                  ),
+                ),
+                _buildInSessionCard(
+                  title: 'Mitra Shield',
+                  subtitle: 'Monsoon Zero-Dep',
+                  badge: 'Active',
+                  icon: Icons.shield_rounded,
+                  iconColor: const Color(0xFF38BDF8),
+                  onTap: () => showDialog(
+                    context: context,
+                    builder: (_) => MitraShieldDialog(appState: appState),
+                  ),
+                ),
+              ],
+            ),
           ),
-          const SizedBox(height: 16),
+          const SizedBox(height: 18),
 
           // 🛑 Stop Charging & Pause Action Buttons (Screen 12 of Mockup)
           Row(
@@ -874,6 +794,75 @@ class LiveChargingScreen extends StatelessWidget {
             overflow: TextOverflow.ellipsis,
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _buildInSessionCard({
+    required String title,
+    required String subtitle,
+    required String badge,
+    required IconData icon,
+    required Color iconColor,
+    required VoidCallback onTap,
+  }) {
+    return Container(
+      width: 140,
+      margin: const EdgeInsets.only(right: 10),
+      decoration: BoxDecoration(
+        color: AppTheme.chargingCard,
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: iconColor.withOpacity(0.35)),
+      ),
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(16),
+        child: Padding(
+          padding: const EdgeInsets.all(12),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    padding: const EdgeInsets.all(7),
+                    decoration: BoxDecoration(
+                      color: iconColor.withOpacity(0.18),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Icon(icon, color: iconColor, size: 18),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                    decoration: BoxDecoration(
+                      color: iconColor.withOpacity(0.2),
+                      borderRadius: BorderRadius.circular(6),
+                    ),
+                    child: Text(
+                      badge,
+                      style: TextStyle(color: iconColor, fontWeight: FontWeight.w800, fontSize: 9),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 10),
+              Text(
+                title,
+                style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w800, color: Colors.white),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
+              const SizedBox(height: 2),
+              Text(
+                subtitle,
+                style: const TextStyle(fontSize: 10, color: Colors.white60),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

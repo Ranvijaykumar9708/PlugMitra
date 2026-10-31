@@ -18,6 +18,7 @@ import '../widgets/home_sync_sheet.dart';
 import '../widgets/p2p_sharing_sheet.dart';
 import '../widgets/highway_corridor_dialog.dart';
 import '../widgets/carbon_marketplace_sheet.dart';
+import '../widgets/services_hub_sheet.dart';
 import 'station_detail_sheet.dart';
 
 class DiscoverScreen extends StatefulWidget {
@@ -33,18 +34,15 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
   final TextEditingController _searchCtrl = TextEditingController();
   final List<String> _quickChips = [
     'All',
+    '✨ Services Hub (12)',
     'Available',
-    'Fast Charging',
+    '⚡ Fast DC',
     '🔄 Battery Swap',
-    '🗺️ Mountain Elevation',
+    '🚨 Rescue SOS',
+    '☀️ 100% Solar',
     '🩺 Battery Doctor',
     '🤖 Valet Concierge',
     '🏡 Home Sync',
-    '🤝 P2P Sharing',
-    '🛣️ Highway Corridor',
-    '🪙 Green Tokens',
-    '🚨 Mitra Rescue SOS',
-    '☀️ 100% Solar',
     '🛣️ Plan Trip',
     '⭐ PlugMitra Hubs',
     'Truck Bay',
@@ -316,7 +314,16 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
                           padding: const EdgeInsets.only(right: 8),
                           child: GestureDetector(
                             onTap: () {
-                              if (chip.contains('Plan')) {
+                              if (chip.contains('Services Hub') || chip.contains('✨')) {
+                                showModalBottomSheet(
+                                  context: context,
+                                  isScrollControlled: true,
+                                  backgroundColor: Colors.transparent,
+                                  builder: (_) => ServicesHubSheet(appState: widget.appState),
+                                );
+                              } else if (chip.contains('Fast DC')) {
+                                state.setFilterChip('Fast Charging');
+                              } else if (chip.contains('Plan')) {
                                 showDialog(
                                   context: context,
                                   builder: (_) => TripPlannerDialog(appState: widget.appState),

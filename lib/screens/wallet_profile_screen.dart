@@ -16,6 +16,7 @@ import '../widgets/carbon_marketplace_sheet.dart';
 import '../widgets/mitra_shield_dialog.dart';
 import '../widgets/home_sync_sheet.dart';
 import '../widgets/p2p_sharing_sheet.dart';
+import '../widgets/highway_corridor_dialog.dart';
 
 class WalletProfileScreen extends StatefulWidget {
   final AppState appState;
@@ -584,110 +585,7 @@ class _WalletProfileScreenState extends State<WalletProfileScreen> {
               ),
             ],
           ),
-          const SizedBox(height: 8),
-
-          // 💎 Luxury Innovations Row: Battery Doctor, Swap Cabinet & Valet Concierge
-          Row(
-            children: [
-              Expanded(
-                child: InkWell(
-                  onTap: () {
-                    showDialog(
-                      context: context,
-                      builder: (_) => BatteryDoctorDialog(appState: widget.appState),
-                    );
-                  },
-                  borderRadius: BorderRadius.circular(14),
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(14),
-                      border: Border.all(color: AppTheme.borderLight),
-                    ),
-                    child: const Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(Icons.health_and_safety_outlined, color: AppTheme.primaryGreen, size: 16),
-                        SizedBox(width: 4),
-                        Text(
-                          'Battery SoH',
-                          style: TextStyle(fontWeight: FontWeight.w700, fontSize: 11, color: AppTheme.textPrimary),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(width: 8),
-              Expanded(
-                child: InkWell(
-                  onTap: () {
-                    showModalBottomSheet(
-                      context: context,
-                      isScrollControlled: true,
-                      backgroundColor: Colors.transparent,
-                      builder: (_) => BatterySwapSheet(appState: widget.appState),
-                    );
-                  },
-                  borderRadius: BorderRadius.circular(14),
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(14),
-                      border: Border.all(color: AppTheme.borderLight),
-                    ),
-                    child: const Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(Icons.sync_rounded, color: AppTheme.electricMint, size: 16),
-                        SizedBox(width: 4),
-                        Text(
-                          '60s Swap',
-                          style: TextStyle(fontWeight: FontWeight.w700, fontSize: 11, color: AppTheme.textPrimary),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(width: 8),
-              Expanded(
-                child: InkWell(
-                  onTap: () {
-                    showModalBottomSheet(
-                      context: context,
-                      isScrollControlled: true,
-                      backgroundColor: Colors.transparent,
-                      builder: (_) => ValetRobochargeSheet(appState: widget.appState),
-                    );
-                  },
-                  borderRadius: BorderRadius.circular(14),
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(14),
-                      border: Border.all(color: AppTheme.borderLight),
-                    ),
-                    child: const Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(Icons.car_rental_rounded, color: Color(0xFFC084FC), size: 16),
-                        SizedBox(width: 4),
-                        Text(
-                          'Valet Bay',
-                          style: TextStyle(fontWeight: FontWeight.w700, fontSize: 11, color: AppTheme.textPrimary),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 8),
+          const SizedBox(height: 12),
 
           // ⚡ V2G Grid Sell Earnings Banner
           InkWell(
@@ -765,72 +663,42 @@ class _WalletProfileScreenState extends State<WalletProfileScreen> {
               ),
             ),
           ),
-          const SizedBox(height: 8),
+          const SizedBox(height: 16),
 
-          // 💎 4 Next-Gen Services: Green Tokens, Mitra Shield, Home-Sync & P2P Host
+          // 💎 Section 1: Smart Mobility & Hardware
+          const Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text('Smart Mobility & IoT', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w800, color: AppTheme.textPrimary)),
+              Text('Next-Gen', style: TextStyle(fontSize: 11, fontWeight: FontWeight.w700, color: AppTheme.primaryGreen)),
+            ],
+          ),
+          const SizedBox(height: 8),
           Row(
             children: [
-              Expanded(
-                child: InkWell(
-                  onTap: () {
-                    showModalBottomSheet(
-                      context: context,
-                      isScrollControlled: true,
-                      backgroundColor: Colors.transparent,
-                      builder: (_) => CarbonMarketplaceSheet(appState: widget.appState),
-                    );
-                  },
-                  borderRadius: BorderRadius.circular(14),
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(14),
-                      border: Border.all(color: AppTheme.borderLight),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Icon(Icons.eco_rounded, color: AppTheme.primaryGreen, size: 16),
-                        const SizedBox(width: 4),
-                        Text(
-                          '${widget.appState.greenCarbonTokens.toStringAsFixed(0)} Tokens',
-                          style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 11, color: AppTheme.textPrimary),
-                        ),
-                      ],
-                    ),
-                  ),
+              _buildProfileServiceCard(
+                icon: Icons.sync_rounded,
+                iconColor: AppTheme.electricMint,
+                title: '60s Swap Bay',
+                subtitle: 'Instant 100% SoC pack',
+                onTap: () => showModalBottomSheet(
+                  context: context,
+                  isScrollControlled: true,
+                  backgroundColor: Colors.transparent,
+                  builder: (_) => BatterySwapSheet(appState: widget.appState),
                 ),
               ),
               const SizedBox(width: 8),
-              Expanded(
-                child: InkWell(
-                  onTap: () {
-                    showDialog(
-                      context: context,
-                      builder: (_) => MitraShieldDialog(appState: widget.appState),
-                    );
-                  },
-                  borderRadius: BorderRadius.circular(14),
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(14),
-                      border: Border.all(color: AppTheme.borderLight),
-                    ),
-                    child: const Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(Icons.shield_outlined, color: Color(0xFF0284C7), size: 16),
-                        SizedBox(width: 4),
-                        Text(
-                          'Mitra Shield',
-                          style: TextStyle(fontWeight: FontWeight.w700, fontSize: 11, color: AppTheme.textPrimary),
-                        ),
-                      ],
-                    ),
-                  ),
+              _buildProfileServiceCard(
+                icon: Icons.car_rental_rounded,
+                iconColor: const Color(0xFFC084FC),
+                title: 'Valet Concierge',
+                subtitle: 'Charge to 80% & park',
+                onTap: () => showModalBottomSheet(
+                  context: context,
+                  isScrollControlled: true,
+                  backgroundColor: Colors.transparent,
+                  builder: (_) => ValetRobochargeSheet(appState: widget.appState),
                 ),
               ),
             ],
@@ -838,69 +706,93 @@ class _WalletProfileScreenState extends State<WalletProfileScreen> {
           const SizedBox(height: 8),
           Row(
             children: [
-              Expanded(
-                child: InkWell(
-                  onTap: () {
-                    showModalBottomSheet(
-                      context: context,
-                      isScrollControlled: true,
-                      backgroundColor: Colors.transparent,
-                      builder: (_) => HomeSyncSheet(appState: widget.appState),
-                    );
-                  },
-                  borderRadius: BorderRadius.circular(14),
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(14),
-                      border: Border.all(color: AppTheme.borderLight),
-                    ),
-                    child: const Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(Icons.solar_power_outlined, color: Color(0xFFF59E0B), size: 16),
-                        SizedBox(width: 4),
-                        Text(
-                          'Home-Sync IoT',
-                          style: TextStyle(fontWeight: FontWeight.w700, fontSize: 11, color: AppTheme.textPrimary),
-                        ),
-                      ],
-                    ),
-                  ),
+              _buildProfileServiceCard(
+                icon: Icons.solar_power_rounded,
+                iconColor: const Color(0xFFF59E0B),
+                title: 'Home-Sync Solar',
+                subtitle: 'Rooftop solar IoT',
+                onTap: () => showModalBottomSheet(
+                  context: context,
+                  isScrollControlled: true,
+                  backgroundColor: Colors.transparent,
+                  builder: (_) => HomeSyncSheet(appState: widget.appState),
                 ),
               ),
               const SizedBox(width: 8),
-              Expanded(
-                child: InkWell(
-                  onTap: () {
-                    showModalBottomSheet(
-                      context: context,
-                      isScrollControlled: true,
-                      backgroundColor: Colors.transparent,
-                      builder: (_) => P2pSharingSheet(appState: widget.appState),
-                    );
-                  },
-                  borderRadius: BorderRadius.circular(14),
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(14),
-                      border: Border.all(color: AppTheme.borderLight),
-                    ),
-                    child: const Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(Icons.handshake_outlined, color: Color(0xFF10B981), size: 16),
-                        SizedBox(width: 4),
-                        Text(
-                          'P2P Wallbox Host',
-                          style: TextStyle(fontWeight: FontWeight.w700, fontSize: 11, color: AppTheme.textPrimary),
-                        ),
-                      ],
-                    ),
-                  ),
+              _buildProfileServiceCard(
+                icon: Icons.handshake_rounded,
+                iconColor: const Color(0xFF10B981),
+                title: 'P2P Wallbox Host',
+                subtitle: 'Rent home charger',
+                onTap: () => showModalBottomSheet(
+                  context: context,
+                  isScrollControlled: true,
+                  backgroundColor: Colors.transparent,
+                  builder: (_) => P2pSharingSheet(appState: widget.appState),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 16),
+
+          // 🛡️ Section 2: Health & Protection
+          const Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text('Battery Health & Protection', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w800, color: AppTheme.textPrimary)),
+              Text('Certified', style: TextStyle(fontSize: 11, fontWeight: FontWeight.w700, color: Color(0xFF0284C7))),
+            ],
+          ),
+          const SizedBox(height: 8),
+          Row(
+            children: [
+              _buildProfileServiceCard(
+                icon: Icons.health_and_safety_rounded,
+                iconColor: AppTheme.primaryGreen,
+                title: 'Battery Doctor',
+                subtitle: '98.2% SoH OEM Audit',
+                onTap: () => showDialog(
+                  context: context,
+                  builder: (_) => BatteryDoctorDialog(appState: widget.appState),
+                ),
+              ),
+              const SizedBox(width: 8),
+              _buildProfileServiceCard(
+                icon: Icons.shield_rounded,
+                iconColor: const Color(0xFF0284C7),
+                title: 'Mitra Shield',
+                subtitle: 'Monsoon Zero-Dep',
+                onTap: () => showDialog(
+                  context: context,
+                  builder: (_) => MitraShieldDialog(appState: widget.appState),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 8),
+          Row(
+            children: [
+              _buildProfileServiceCard(
+                icon: Icons.eco_rounded,
+                iconColor: const Color(0xFF10B981),
+                title: '${widget.appState.greenCarbonTokens.toStringAsFixed(0)} Tokens',
+                subtitle: 'Trade & FASTag store',
+                onTap: () => showModalBottomSheet(
+                  context: context,
+                  isScrollControlled: true,
+                  backgroundColor: Colors.transparent,
+                  builder: (_) => CarbonMarketplaceSheet(appState: widget.appState),
+                ),
+              ),
+              const SizedBox(width: 8),
+              _buildProfileServiceCard(
+                icon: Icons.add_road_rounded,
+                iconColor: const Color(0xFF818CF8),
+                title: 'Highway Corridor',
+                subtitle: 'Expressway fallback',
+                onTap: () => showDialog(
+                  context: context,
+                  builder: (_) => HighwayCorridorDialog(appState: widget.appState),
                 ),
               ),
             ],
@@ -1640,6 +1532,69 @@ class _WalletProfileScreenState extends State<WalletProfileScreen> {
         ),
       );
     });
+  }
+
+  Widget _buildProfileServiceCard({
+    required IconData icon,
+    required Color iconColor,
+    required String title,
+    required String subtitle,
+    required VoidCallback onTap,
+  }) {
+    return Expanded(
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(16),
+        child: Container(
+          padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 10),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(16),
+            border: Border.all(color: AppTheme.borderLight),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.04),
+                blurRadius: 6,
+                offset: const Offset(0, 2),
+              ),
+            ],
+          ),
+          child: Row(
+            children: [
+              Container(
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color: iconColor.withOpacity(0.12),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Icon(icon, color: iconColor, size: 18),
+              ),
+              const SizedBox(width: 8),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      title,
+                      style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 11, color: AppTheme.textPrimary),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    const SizedBox(height: 2),
+                    Text(
+                      subtitle,
+                      style: const TextStyle(fontSize: 9, color: AppTheme.textSecondary),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
 
